@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Math Quiz with Timer</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .container { max-width: 700px; margin: auto; }
+    .hidden { display: none; }
+    .question { margin-bottom: 20px; }
+    .question-title { font-weight: bold; }
+    input[type="password"], input[type="number"] {
+      width: 80%; padding: 10px; margin-bottom: 10px;
+    }
+    button { padding: 10px 15px; margin-top: 10px; }
+    .incorrect { color: red; }
+    #timer { font-weight: bold; color: blue; }
+
+    .allcontainer {
+      background-color: white;
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="allcontainer">
+
+  <div class="container">
+    <h1 style="color:blue;">Evaluation 3</h1>
+    <h3 style="color:blue;">(Level 6 to Level 8)</h3>
+<h3 style="color:green;">"Multiplying Positive Fractions"</h3>
+
+    <!-- Password before quiz -->
+    <div id="entry-section">
+      <h3>Enter Password & Time to Start Quiz</h3>
+<p><i>Note:This quiz is applicable only to the learners/users who already completed level 6 to 8 in the game. There are 5 items to be answered within the given time. Only the authorized teacher will provide the password and time.</i></p>
+      <input type="password" id="entry-password" placeholder="Password (refer to app manual)">
+<br>
+      <input type="number" id="time-limit" placeholder="Time (minutes)" min="1">
+<br>
+      <button onclick="startQuiz()">Start Quiz</button>
+      <p id="entry-msg"></p>
+    </div>
+
+    <!-- Quiz Instructions -->
+    <div id="instruction-section" class="hidden">
+      <h2>Instruction:</h2>
+      <ul>
+        <li>You will be given 5 math questions.</li>
+        <li>Each question has 4 choices – choose the correct one.</li>
+        <li>Show your solution in each item.</li>
+        <li>You have a time limit that the authorized teacher set before the quiz starts.</li>
+        <li>After submitting, the teacher must re-enter the password to see your score.</li>
+        <li>The correct answers will not be shown, only your score and mistakes.</li>
+      </ul>
+      <button onclick="beginQuiz()">Begin Quiz</button>
+    </div>
+
+    <!-- Quiz section -->
+    <div id="quiz-section" class="hidden">
+      <p id="timer">Time Left: --:--</p>
+      <form id="quiz-form"></form>
+      <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+    </div>
+
+    <!-- Password before showing result -->
+    <div id="result-auth" class="hidden">
+      <h3>Enter Password to View Score</h3>
+      <input type="password" id="result-password" placeholder="Password">
+      <button onclick="checkScore()">View Score</button>
+      <p id="result-msg"></p>
+    </div>
+
+    <!-- Result section -->
+    <div id="result-section" class="hidden">
+      <h2>Quiz Result</h2>
+      <p id="score-output"></p>
+      <div id="incorrect-list"></div>
+<a href="BASIC.html"><button style="background-color: blue;color:white;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Log In</button></a>
+    </div>
+  </div>
+
+  <script>
+    const PASSWORD = "depedr7";
+    const questions = [
+      { q: "Solve and simplify 1/2 x 3/4.", choices: ["3/8", "4/6", "13/24", "3/6"], answer: "3/8" },
+      { q: "Solve and simplify 1/3 x 3/5.", choices: ["4/15", "13/35", "1/5", "3/18"], answer: "1/5" },
+      { q: "Solve and simplify 6 x 2/15.", choices: ["12/51", "4/5", "8/15", "4/15"], answer: "4/5" },
+      { q: "Solve and simplify 9/3 x 6/2.", choices: ["9", "15/6", "54/5", "3/6"], answer: "9" },
+      { q: "Solve and simplify 1 1/2 x 2 1/3.", choices: ["2 1/6", "1 3/5", "12 1/3", "3 1/2"], answer: "3 1/2" }
+    ];
+
+    let timeLeft = 0;
+    let timerInterval;
+
+    function startQuiz() {
+      const pw = document.getElementById("entry-password").value.trim();
+      const minutes = parseInt(document.getElementById("time-limit").value);
+
+      if (pw !== PASSWORD) {
+        document.getElementById("entry-msg").innerText = "Incorrect password.";
+        return;
+      }
+      if (!minutes || minutes < 1) {
+        document.getElementById("entry-msg").innerText = "Please enter a valid time (in minutes).";
+        return;
+      }
+
+      timeLeft = minutes * 60;
+      document.getElementById("entry-section").classList.add("hidden");
+      document.getElementById("instruction-section").classList.remove("hidden");
+    }
+
+    function beginQuiz() {
+      document.getElementById("instruction-section").classList.add("hidden");
+      document.getElementById("quiz-section").classList.remove("hidden");
+      loadQuiz();
+      startTimer();
+    }
+
+    function loadQuiz() {
+      const form = document.getElementById("quiz-form");
+      form.innerHTML = "";
+      questions.forEach((q, i) => {
+        const div = document.createElement("div");
+        div.className = "question";
+        div.innerHTML = `
+          <div class="question-title">${i + 1}. ${q.q}</div>
+          ${q.choices.map(choice => `
+            <label><input type="radio" name="q${i}" value="${choice}"> ${choice}</label><br>
+          `).join("")}
+        `;
+        form.appendChild(div);
+      });
+    }
+
+    function startTimer() {
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          alert("Time is up! Submitting quiz.");
+          submitQuiz();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(timeLeft / 60);
+      const secs = timeLeft % 60;
+      document.getElementById("timer").innerText = `Time Left: ${mins}:${secs < 10 ? "0" : ""}${secs}`;
+    }
+
+    function submitQuiz() {
+      clearInterval(timerInterval);
+      document.getElementById("quiz-section").classList.add("hidden");
+      document.getElementById("result-auth").classList.remove("hidden");
+    }
+
+    function checkScore() {
+      const pw = document.getElementById("result-password").value.trim();
+      if (pw === PASSWORD) {
+        showResults();
+      } else {
+        document.getElementById("result-msg").innerText = "Incorrect password.";
+      }
+    }
+
+    function showResults() {
+      let score = 0;
+      let incorrect = [];
+      questions.forEach((q, i) => {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        const userAnswer = selected ? selected.value : null;
+        if (userAnswer === q.answer) {
+          score++;
+        } else {
+          incorrect.push({
+            number: i + 1,
+            question: q.q,
+            yourAnswer: userAnswer || "No Answer"
+          });
+        }
+      });
+
+      document.getElementById("result-auth").classList.add("hidden");
+      document.getElementById("result-section").classList.remove("hidden");
+      document.getElementById("score-output").innerText = `You scored ${score} out of ${questions.length}`;
+
+      const list = document.getElementById("incorrect-list");
+      if (incorrect.length === 0) {
+        list.innerHTML = "<p>All your answers were correct! 🎉</p>";
+      } else {
+        list.innerHTML = "<h3>Incorrect Items:</h3>" + incorrect.map(item => `
+          <div class="incorrect">
+            <p><strong>Question ${item.number}:</strong> ${item.question}</p>
+            <p>Your Answer: ${item.yourAnswer}</p>
+          </div>
+        `).join("");
+      }
+    }
+  </script>
+
+</div> <!--closed allcontainer-->
+</body>
+</html>
