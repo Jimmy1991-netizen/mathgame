@@ -1,0 +1,3217 @@
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Game with Authentication</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f5f5f5;
+      padding-top: 50px;
+    }
+    .container {
+      background-color: white;
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    button {
+      background-color: red;
+      color:white;
+      margin: 10px;
+      padding: 10px;
+      width: 80%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    input {
+      background-color: white;
+      color:black;
+      margin: 10px;
+      padding: 10px;
+      width: 80%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    #score, #clicks, #accountDisplay {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+/*SET ACCOUNT NAME TO ALL CAPITAL LETTERS*/
+		input[type="text"]{
+		text-transform:uppercase;		
+ }
+
+	.fraction-center {
+            width: 30px;
+		color:black;
+        }
+
+	.fraction-container {
+            width: 30px;
+            color:black;
+		/*background:red;*/
+		//position:fixed;
+		position:absolute;
+		left:42%;
+        }
+      .fraction-container2 {
+            width: 30px; 
+		color:black;
+		/*background:blue;*/
+		//position:fixed;
+		position:absolute;
+		left:57%;   
+        }
+      .fraction-container3 {   
+            width: 30px;
+	    color:black;
+            position:absolute;
+            left:49.5%;   
+        }
+/*level 8 */
+
+	.fraction {
+            display: inline-flex;
+            align-items: center;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+/*level 8 */
+        .nume101 {
+		color:black;
+	margin-left: -120px; 
+	margin-top: 0px;
+        }
+        .deno101 {
+		color:black;
+	margin-left: -120px; 
+	margin-top: 2px;
+        }
+
+/*level 8 */
+        .fraction-line {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+        }
+ .fraction2-line {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+        }
+/*level 8 */
+        .nume102 {
+		color:black;
+	margin-left: 120px; 
+	margin-top: -30px;
+        }
+        .deno102 {
+		color:black;
+	margin-left: 120px; 
+	margin-top: 1px;
+        }
+/*level 8 */
+        .whole101 {
+		color:black; 
+	margin-left: -165px;
+	margin-top: -30px;
+        }
+/*level 8 */
+        .whole102 {
+		color:black; 
+	margin-left: 75px;
+	margin-top: -18px;
+        }
+/*level 8 */
+        .vinculum2 {
+            border-top: 2px solid black;
+            width: 10%;
+            margin-top: 0px;
+		margin-left: -120px;
+        }
+	.vinculum22 {
+            border-top: 2px solid black;
+            width: 10%;
+            margin-top: 0px;
+		margin-left: 120px;
+        }
+	.opera {
+		margin-top: -28px;
+            position:center;
+        }
+
+	 .vinculum {
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            margin: 2px 0;
+        }
+
+.spacelevel6 {
+            width: 300px;
+            color:black;
+		/*background:yellow;*/
+		//position:fixed;
+		left:30px;
+        }
+.intro1{
+	width:300px;
+	background:pink;
+	border-radius:6px;	
+	position:absolute;
+	top:30%;
+	left:50%;
+	transform:translate(-50%,-50%) scale(1);
+	text-align:center;
+	padding:0 30px 30px;
+	color:#333;
+	visibility:visible;
+	transition:transform 0.9s, top 0.9s;
+}
+ /* Style for the loading bar iin intro */
+        #loadingBar {
+            height: 100%;
+            width: 0;
+            background-color: #4caf50;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            border-radius: 10px;
+        }
+
+.popup1{
+	width:300px;
+	background:white;
+	border-radius:6px;	
+	position:absolute;
+	top:0%;
+	left:50%;
+	transform:translate(-50%,-50%) scale(1);
+	text-align:center;
+	padding:0 30px 30px;
+	color:#333;
+	visibility:hidden;
+	transition:transform 0.9s, top 0.9s;
+}
+   .open-popup{
+	visibility:visible;
+	top:50%;
+	transform: translate (50%,50%);
+
+}
+
+.popup1 button {
+	width:30%;
+	margin-top:50px;
+	padding:10px 0;
+	background:#6fd649;
+	color:#fff;
+	border:0;
+	outline:none;
+	font-size:18px;
+	cursor:pointer;
+	box-shadow:0 5px 5px rgba(0,0,0,0.2);
+}
+
+ /*LEVEL ANIMATION*/
+        .cropped-container {
+            width: 300px;   /* Desired width of the cropped area */
+            height: 80%;  /* Desired height of the cropped area */
+            overflow: hidden;  /* Hide overflow to create the cropping effect */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		position:absolute;
+		top:50%;
+		left:50%;
+		transform:translate(-50%,-50%) scale(1);/* para ma center*/
+        }
+
+        .cropped-container img {
+            width: 100%;  /* Fill the container's width */
+            height: 100%; /* Fill the container's height */
+            object-fit: cover; /* Crops the image to cover the container */
+            object-position: center; /* Centers the image */
+        }
+
+  </style>
+</head>
+<body>
+   	<audio id="myAudio" src="check.mp3"></audio>
+	<audio id="myAudio2" src="animatemusic.mp3"></audio>
+
+<!-- Intro Page -->
+<div class="intro1" id="intro">
+<br><br><br><br>
+	<h2>NOTICE!</h2>
+	<img src="deped.png" width="200px" height="200px" >
+<br>
+<p style="text-align: justify;"><i>This mobile application project was built to address the least mastered skills of students in Loboc National High School based on TOFAS 2024 Pre-Test result.</i></p>
+<p>
+<b>MIA MARIE J. BILIRAN</b><br>
+<i>Secondary School Principal</i><br><br>
+<b>JIMMY O. EGCALINOS</b><br>
+<i>Teacher / Mobile App Creator</i>
+</p><br><br>
+<p>(All Rights Reserved 2024)</p>
+<div id="loadingBar">0%</div>
+</div>
+
+
+<!-- Authentication Page -->
+<div class="container" id="authPage">
+
+  <button id="loginButton">Log In</button>
+  <button id="signUpButton">Create New Account</button>
+<hr>
+<p style="font-size:10px;text-align:left;">Click <b>"Log In"</b> if you already have an account.</p>
+<p style="font-size:10px;text-align:left;">Click <b>"Create New Account"</b> if you don't have an account yet.</p>
+<p style="font-size:10px;text-align:left;">Please do not forget your account after you successfully registered.</p>
+</div>
+
+<!-- Sign-Up Form -->
+<div class="container" id="signUpPage" style="display: none;">
+  <h2>Sign Up</h2>
+<p style="font-size:10px;text-align:left;">Account Name is the Last Name of the learner with the last 3-digit of his/her LRN. Example <b>"EGCALINOS 101"</b>.</p>
+
+  <input type="text" id="newAccount" placeholder="Account Name">
+<p style="font-size:10px;text-align:left;">Password is preferably at least <b>4-digit number</b>.</p>
+  <input type="password" id="newPassword" placeholder="Password">
+  <button id="registerButton">Register</button>
+  <button onclick="Backbutton();">Back</button>
+</div>
+
+<!-- Login Form -->
+<div class="container" id="loginPage" style="display: none;">
+  <h2>Log In</h2>
+  <input type="text" id="loginAccount" placeholder="Account Name">
+  <input type="password" id="loginPassword" placeholder="Password">
+  <button onclick="loginSubmitButton();">Log In</button>
+  <button onclick="Backbutton();">Back</button>
+</div>
+
+<!-- Current Level -->
+<div class="container" id="CoverPage" style="display: none;">
+
+  <h1 style="line-height:1;color:blue;"><span style="color:turquoise;font-size:50%"><i>Welcome to</i></span><br>Ejim The Math Challenger<br>
+<span style="color:red;font-size:50%"><i>Challenging Mode</i></span></h1>
+  <div id="accountDisplay"></div>
+
+  <button onclick="CheckLevel();startButton();clickfix();restartTimer();" style="box-shadow:0 5px 5px rgba(0,0,0,0.2);">PLAY</button>
+
+  <button id="resetButton" style="background-color: orange;box-shadow:0 5px 5px rgba(0,0,0,0.2);display:none;">Reset</button>
+  <button onclick="listall();" style="background-color: orange;box-shadow:0 5px 5px rgba(0,0,0,0.2);">List of All Levels</button>
+  <a href="list.html"><button style="background-color: blue;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Evaluation Room</button></a>
+
+  <button id="logoutButton" style="background-color: red; color: white;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Log Out</button>
+</div>
+
+<!-- Score and Clicks -->
+<div class="container" id="ScoreClicks" style="display: none;">
+  <b><div id="accountko" style="line-height:0;"></div></b>
+<br>
+  <b><div id="levelko"></div></b>
+  <div id="score">Score: 0</div>
+  <div id="clicks">Item: 0</div>
+ </div>
+
+
+<!-- Game Page open-->
+<div class="container" id="gamePage" style="display: none;">
+  <h3 style="color:green">Ejim's Math Challenge</h3>
+  <h3 id="newlevel" style="line-height:0.1;"></h3>
+<b id="category">Category</b>
+  <div id="accountDisplay"></div>
+<center>
+  <button onclick="startButton();restartTimer();" style="box-shadow:0 5px 5px rgba(0,0,0,0.2);" id="buttonew">Generate Question</button>
+  <div >Timer:<span id="timer">40</span></div>
+</center>
+  <p id="question" style="display: block;"></p>
+
+<div id="inputBox" style="display: none;">
+			<p><i>Note: Increasing order.</i></p>
+			<input id="userAnswer1"></input>
+			<input id="userAnswer2"></input>
+			<button onclick="finalize1()">Finalize Answer</button>
+<p id="write33" style="display:none;">Your answer is (<span id="factor31">n</span>)(<span id="factor32">d</span>).</p>
+			 <p id="answercode"></p>
+			<p>Type your code inside the box.</p>
+	</div>
+
+<div id="inputBox2" style="display: none;"> 
+			<p><i>Note: Increasing order.</i></p>
+			<input id="userAnswer3"></input>
+			<input id="userAnswer4"></input>
+			<input id="userAnswer5"></input>
+			<button onclick="finalize2()">Finalize Answer</button>
+<p id="write44" style="display:none;">Your answer is (<span id="factor41">n</span>)(<span id="factor42">d</span>)(<span id="factor43">e</span>).</p>
+			 <p id="answercode2"></p>
+			<p>Type your code inside the box.</p>
+	</div>
+
+
+
+<div id="fraction1" class="fraction1" style="display: none;"> <!--fraction1 open -->
+<center>
+
+<p id="question2" style="display: none">Solve and simplify.</p>
+<p id="note1"><i>Note: Increasing order.</i></p>
+
+	<div id="fractionlevel5" class="fraction-center" style="display: none;">
+            <span id="numerator">0</span> 
+            <p class="vinculum"></p>
+            <span id="denominator">1</span>
+        </div>	
+
+        <div id="fractionlevel6" class="fraction-container" style="display: none;">
+            <span id="numerator31">0</span> 
+            <p class="vinculum"></p>
+            <span id="denominator31">1</span>
+        </div>	
+	
+	<div id="operation1" class="fraction-container3" style="display: none;">
+            <p>X</p>
+        </div>
+
+        <div id="fraction2" class="fraction-container2" style="display: none;">
+            <span id="numerator21">0</span> 
+            <p class="vinculum"></p>
+            <span id="denominator21">1</span>
+        </div>
+</center>	
+	
+	</div> <!--fraction1 close -->
+
+
+    <div id="question6" style="display: none;"> <!--fraction6 open -->
+<p></p>
+        <!-- The fraction will be displayed here -->
+<p>Solve and simplify.</p>
+    
+		<span class="fraction-line">
+            <span class="nume101" id="numerator3">10</span> 
+            <span class="vinculum2"></span>
+            <span class="deno101" id="denominator3">11</span>
+	
+		<span class="opera">X</span>
+
+		<span class="nume102" id="numerator2">10</span> 
+		<span class="vinculum22"></span>
+		<span class="deno102" id="denominator2">10</span>
+		</span>
+		
+    </div> <!--fraction6 close -->
+
+
+    <div id="question7" style="display: none;"> <!--fraction7 open -->
+<p></p>
+        <!-- The fraction will be displayed here -->
+<p>Solve and simplify.</p>
+    
+		<span class="fraction-line">
+            <span class="nume101" id="numerator71">10</span> 
+            <span class="vinculum2"></span>
+            <span class="deno101" id="denominator71">11</span>
+	
+		<span class="opera">X</span>
+
+		<span class="nume102" id="numerator72">10</span> 
+		<span class="vinculum22"></span>
+		<span class="deno102" id="denominator72">10</span>
+		</span>
+		
+    </div> <!--fraction7 close -->
+
+<div id="inputBox3" style="display: none;"> <!--inputBox3 open for level 7-->
+
+			<input id="userAnswer6" placeholder="Numerator"></input>
+			<input id="userAnswer7" placeholder="Denominator"></input>
+			<button onclick="finalize3()">Finalize Answer</button>
+
+<p id="write77" style="display:none;">Your answer is <sup id="sup7">n</sup>&frasl;<sub id="sub7">d</sub></p>
+
+			 <p id="answercode3"></p>
+			<p>Type your code inside the box.</p>
+	</div> <!--inputBox3 close for level 7-->
+
+
+    <div id="question8" style="display: none;"> <!--fraction8 open -->
+<p></p>
+        <!-- The fraction will be displayed here -->
+<p>Solve and simplify.</p>
+    
+		<span class="fraction-line">
+            <span class="nume101" id="nume11">10</span> 
+            <span class="vinculum2"></span>
+            <span class="deno101" id="deno11">11</span>
+	    
+		<span class="opera">X</span>
+		<span class="nume102" id="nume22">10</span> 
+		<span class="vinculum22"></span>
+		<span class="deno102" id="deno22">10</span>
+		
+		</span>
+		
+	
+    </div> <!--fraction8 close -->
+
+ <div id="question81" style="display: none;"> <!--fraction8 open -->
+    
+		<span class="fraction-line">
+ 		<span class="whole101" id="whole11">10</span>
+		<span class="whole102" id="whole22">10</span> 	
+		</span>
+		
+	
+    </div> <!--fraction81 close -->
+
+
+<div id="inputBox4" style="display: none;"> <!--inputBox4 open for level 8-->
+
+			<input id="userAnswer80" placeholder="Whole Number"></input>
+			<input id="userAnswer81" placeholder="Numerator"></input>
+			<input id="userAnswer82" placeholder="Denominator"></input>
+			<button onclick="finalize8()">Finalize Answer</button>
+<p id="write88" style="display:none;">Your answer is <span id="span8"></span>&nbsp;<sup id="sup8">n</sup>&frasl;<sub id="sub8">d</sub></p>
+			 <p id="answercode8"></p>
+			<p>Type your code inside the box.</p>
+	</div> <!--inputBox4 close for level 8-->
+
+
+
+
+ <div id="question9" style="display: none;"> <!--fraction9 open -->
+<p></p>
+        <!-- The fraction will be displayed here -->
+<p>Solve and simplify.</p>
+    
+		<span class="fraction-line">
+            <span class="nume101" id="numerator91">10</span> 
+            <span class="vinculum2"></span>
+            <span class="deno101" id="denominator91">11</span>
+	
+		<span class="opera">X</span>
+
+		<span class="nume102" id="numerator92">10</span> 
+		<span class="vinculum22"></span>
+		<span class="deno102" id="denominator92">10</span>
+		</span>
+	</div><!--fraction9 close -->
+		
+<div id="inputBox9" style="display: none;"> <!--inputBox9 open for level 9-->
+
+			<input id="userAnswer69" placeholder="Numerator"></input>
+			<input id="userAnswer79" placeholder="Denominator"></input>
+			<button onclick="finalize9()">Finalize Answer</button>
+<p id="write99" style="display:none;">Your answer is <sup id="sup9">n</sup>&frasl;<sub id="sub9">d</sub></p>
+			 <p id="answercode9"></p>
+			<p>Type your code inside the box.</p>
+	</div> <!--inputBox9 close for level 9--> 
+
+
+
+    <div id="question10" style="display: none;"> <!--fraction10 open -->
+<p></p>
+        <!-- The fraction will be displayed here -->
+<p>Solve and simplify.</p>
+    
+		<span class="fraction-line">
+            <span class="nume101" id="nume101">10</span> 
+            <span class="vinculum2"></span>
+            <span class="deno101" id="deno101">11</span>
+	    
+		<span class="opera">X</span>
+		<span class="nume102" id="nume102">10</span> 
+		<span class="vinculum22"></span>
+		<span class="deno102" id="deno102">10</span>
+		</span>
+		
+    </div> <!--fraction10 close -->
+
+ <div id="question101" style="display: none;"> <!--fraction110 open -->
+    
+		<span class="fraction-line">
+ 		<span class="whole101" id="whole101">10</span>
+		<span class="whole102" id="whole102">10</span> 	
+		</span>
+    </div> <!--fraction110 close -->
+
+<div id="inputBox10" style="display: none;"> <!--inputBox10 open -->
+
+			<input id="userAnswer100" placeholder="Whole Number"></input>
+			<input id="userAnswer101" placeholder="Numerator"></input>
+			<input id="userAnswer102" placeholder="Denominator"></input>
+			<button onclick="finalize10()">Finalize Answer</button>
+<p id="write1010" style="display:none;">Your answer is <span id="span10"></span>&nbsp;<sup id="sup10">n</sup>&frasl;<sub id="sub10">d</sub></p>
+			 <p id="answercode10"></p>
+			<p>Type your code inside the box.</p>
+	</div> <!--inputBox10 close -->
+
+ <div id="question11" style="display: none;"> <!--fraction11 open -->
+<p></p>
+        <!-- The fraction will be displayed here -->
+<p>Solve and simplify.</p>
+    
+		<span class="fraction-line">
+            <span class="nume101" id="numerator111">10</span> 
+            <span class="vinculum2"></span>
+            <span class="deno101" id="denominator111">11</span>
+	
+		<span class="opera" style="font-size:100%;">÷</span>
+
+		<span class="nume102" id="numerator112">10</span> 
+		<span class="vinculum22"></span>
+		<span class="deno102" id="denominator112">10</span>
+		</span>
+		
+    </div> <!--fraction11 close -->
+
+
+  <div id="question12" style="display: none;"> <!--fraction12 open -->
+<p></p>
+        <!-- The fraction will be displayed here -->
+<p>Solve and simplify.</p>
+    
+		<span class="fraction-line">
+            <span class="nume101" id="numerator121">10</span> 
+            <span class="vinculum2"></span>
+            <span class="deno101" id="denominator121">11</span>
+	
+		<span class="opera">÷</span>
+
+		<span class="nume102" id="numerator122">10</span> 
+		<span class="vinculum22"></span>
+		<span class="deno102" id="denominator122">10</span>
+		</span>
+		
+    </div> <!--fraction12 close -->
+
+<div id="inputBox12" style="display: none;"> <!--inputBox12 open for level 12-->
+
+			<input id="userAnswer612" placeholder="Numerator"></input>
+			<input id="userAnswer712" placeholder="Denominator"></input>
+			<button onclick="finalize12()">Finalize Answer</button>
+<p id="write1212" style="display:none;">Your answer is <sup id="sup12">n</sup>&frasl;<sub id="sub12">d</sub></p>
+			 <p id="answercode12"></p>
+			<p>Type your code inside the box.</p>
+	</div> <!--inputBox12 close for level 12-->
+
+
+    <div id="question13" style="display: none;"> <!--fraction13 open -->
+<p></p>
+        <!-- The fraction will be displayed here -->
+<p>Solve and simplify.</p>
+    
+		<span class="fraction-line">
+            <span class="nume101" id="nume131">10</span> 
+            <span class="vinculum2"></span>
+            <span class="deno101" id="deno131">11</span>
+	    
+		<span class="opera">÷</span>
+		<span class="nume102" id="nume132">10</span> 
+		<span class="vinculum22"></span>
+		<span class="deno102" id="deno132">10</span>
+		
+		</span>
+		
+	
+    </div> <!--fraction13 close -->
+
+ <div id="question131" style="display: none;"> <!--fraction8 open -->
+    
+		<span class="fraction-line">
+ 		<span class="whole101" id="whole131">10</span>
+		<span class="whole102" id="whole132">10</span> 	
+		</span>
+		
+	
+    </div> <!--fraction131 close -->
+
+
+<div id="inputBox13" style="display: none;"> <!--inputBox13 open for level 13-->
+
+			<input id="userAnswer130" placeholder="Whole Number"></input>
+			<input id="userAnswer131" placeholder="Numerator"></input>
+			<input id="userAnswer132" placeholder="Denominator"></input>
+			<button onclick="finalize13()">Finalize Answer</button>
+<p id="write1313" style="display:none;">Your answer is <span id="span13"></span>&nbsp;<sup id="sup13">n</sup>&frasl;<sub id="sub13">d</sub></p>
+			 <p id="answercode13"></p>
+			<p>Type your code inside the box.</p>
+	</div> <!--inputBox13 close for level 13-->
+
+
+
+
+
+
+<div id="spacelevel6" class="spacelevel6" style="display: none;">
+            <p><br><br></p>
+        </div>
+
+
+  <input type="text" id="userAnswer" placeholder="Your answer">
+
+	
+  <button id="submitButton" style="box-shadow:0 5px 5px rgba(0,0,0,0.2);">Submit</button>
+  <p id="result"></p>
+  <p id="result2"></p>
+<center>
+  <button id="restart1" onclick="restart();deduct();" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);position:center;display:none;">Restart Level</button>
+</center>
+  <button id="studyFirst1" style="background-color: green;color:white;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Go to Study Room</button>
+  <button onclick="Home()" style="box-shadow:0 5px 5px rgba(0,0,0,0.2);">HOME</button>
+
+</div>
+<!-- Game Page close-->
+
+
+<div class="popup1" id="popup">
+	<h2><span id="nextlevel"></span> Completed!</h2>
+	<img src="congrats.gif" width="200px" height="200px" >
+<button type="button" onclick="closePopup();CheckLevel()">OK</button>
+</div>
+
+<!--ANIMATION OF LEVELS OPEN-->
+<div id="animatelevel1" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image" >
+    </div>
+<div id="animatelevel2" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image">
+    </div>
+<div id="animatelevel3" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image">
+    </div>
+<div id="animatelevel4" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image">
+    </div>
+<div id="animatelevel5" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image">
+    </div>
+<div id="animatelevel6" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image">
+    </div>
+<div id="animatelevel7" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image">
+    </div>
+<div id="animatelevel8" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image">
+    </div>
+<div id="animatelevel9" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image">
+    </div>
+<div id="animatelevel10" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image">
+    </div>
+<div id="animatelevel11" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image">
+    </div>
+<div id="animatelevel12" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image">
+    </div>
+<div id="animatelevel13" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image">
+    </div>
+<div id="animatelevel14" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image">
+    </div>
+<div id="animatelevel15" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image">
+    </div>
+<div id="animatecomplete" class="cropped-container" style="display: none;">
+        <img src="female.gif" style="width:200px; height:200px;border-radius:50px;" alt="Cropped Image">
+    </div>
+
+
+<!--ANIMATION OF LEVELS CLOSE-->
+
+<!--STUDY ROOM OPEN-->
+<center>
+<div id="study" style="display: none;width:300px;padding:5px;"> <!--ALL STUDY ROOM OPEN-->
+
+<div id="study1" style="display: none;"> <!--OPEN 1-->
+			<p>STUDY LEVEL 1</p>
+			<img src="1Slide1.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="1Slide2.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="1Slide3.jpg" alt="Cropped Image" width=100% height="150">
+<br><br>
+<a href="https://www.youtube.com/watch?v=cerVIk6XWSs&t=39s" target="_blank"> Watch Video Tutorial</a>
+<br><br>
+			<p>Study end here.</p>
+			<button onclick="backGame()" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Game</button>
+	</div><!--CLOSE 1-->
+
+
+<div id="study2" style="display: none;"> <!--OPEN 2-->
+			<p>STUDY LEVEL 2</p>
+			<img src="2Slide1.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="2Slide2.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="2Slide3.jpg" alt="Cropped Image" width=100% height="150">
+<br><br>
+<a href="https://www.youtube.com/watch?v=cerVIk6XWSs&t=39s" target="_blank"> Watch Video Tutorial</a>
+<br><br>
+			<p>Study end here.</p>
+			<button onclick="backGame()" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Game</button>
+	</div> <!--CLOSE 2-->
+
+<div id="study3" style="display: none;"> <!--OPEN 3-->
+			<p>STUDY LEVEL 3</p>
+			<img src="3Slide1.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="3Slide2.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="3Slide3.jpg" alt="Cropped Image" width=100% height="150">
+<br><br>
+<a href="https://www.youtube.com/watch?v=exh-KKPIvs8" target="_blank"> Watch Video Tutorial</a>
+<br><br>
+			<p>Study end here.</p>
+			<button onclick="backGame()" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Game</button>
+	</div><!--CLOSE 3-->
+
+
+<div id="study4" style="display: none;"> <!--OPEN 4-->
+			<p>STUDY LEVEL 4</p>
+			<img src="4Slide1.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="4Slide2.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="4Slide3.jpg" alt="Cropped Image" width=100% height="150">
+<br><br>
+<a href="https://www.youtube.com/watch?v=exh-KKPIvs8" target="_blank"> Watch Video Tutorial</a>
+<br><br>
+			<p>Study end here.</p>
+			<button onclick="backGame()" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Game</button>
+	</div> <!--CLOSE 4-->
+
+<div id="study5" style="display: none;"> <!--OPEN 5-->
+			<p>STUDY LEVEL 5</p>
+			<img src="5Slide1.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="5Slide2.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="5Slide3.jpg" alt="Cropped Image" width=100% height="150">
+<br><br>
+<a href="https://www.youtube.com/watch?v=1mhRokAF0ok" target="_blank"> Watch Video Tutorial</a>
+<br><br>
+			<p>Study end here.</p>
+			<button onclick="backGame()" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Game</button>
+	</div><!--CLOSE 5-->
+
+
+<div id="study6" style="display: none;"> <!--OPEN 6-->
+			<p>STUDY LEVEL 6</p>
+			<img src="6Slide1.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="6Slide2.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="6Slide3.jpg" alt="Cropped Image" width=100% height="150">
+<br><br>
+<a href="https://www.youtube.com/watch?v=vruJEB-GU6I" target="_blank"> Watch Video Tutorial</a>
+<br><br>
+			<p>Study end here.</p>
+			<button onclick="backGame()" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Game</button>
+	</div> <!--CLOSE 6-->
+
+<div id="study7" style="display: none;"> <!--OPEN 7-->
+			<p>STUDY LEVEL 7</p>
+			<img src="7Slide1.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="7Slide2.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="7Slide3.jpg" alt="Cropped Image" width=100% height="150">
+<br><br>
+<a href="https://www.youtube.com/watch?v=vruJEB-GU6I" target="_blank"> Watch Video Tutorial</a>
+<br><br>
+			<p>Study end here.</p>
+			<button onclick="backGame()" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Game</button>
+	</div><!--CLOSE 7-->
+
+
+<div id="study8" style="display: none;"> <!--OPEN 8-->
+			<p>STUDY LEVEL 8</p>
+			<img src="8Slide1.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="8Slide2.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="8Slide3.jpg" alt="Cropped Image" width=100% height="150">
+<br><br>
+<a href="https://www.youtube.com/watch?v=_iJO-b4zywE" target="_blank"> Watch Video Tutorial</a>
+<br><br>
+			<p>Study end here.</p>
+			<button onclick="backGame()" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Game</button>
+	</div> <!--CLOSE 8-->
+
+<div id="study9" style="display: none;"> <!--OPEN 9-->
+			<p>STUDY LEVEL 9</p>
+			<img src="9Slide1.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="9Slide2.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="9Slide3.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="9Slide4.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="9Slide5.jpg" alt="Cropped Image" width=100% height="150">
+<br><br>
+<a href="https://www.youtube.com/watch?v=kq6m7Lgux54" target="_blank"> Watch Video Tutorial</a>
+<br><br>
+			<p>Study end here.</p>
+			<button onclick="backGame()" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Game</button>
+	</div><!--CLOSE 9-->
+
+
+<div id="study10" style="display: none;"> <!--OPEN 10-->
+			<p>STUDY LEVEL 10</p>
+			<img src="10Slide1.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="10Slide2.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="10Slide3.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="10Slide4.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="10Slide5.jpg" alt="Cropped Image" width=100% height="150">
+<br><br>
+<a href="https://www.youtube.com/watch?v=_iJO-b4zywE" target="_blank"> Watch Video Tutorial</a>
+<br><br>
+			<p>Study end here.</p>
+			<button onclick="backGame()" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Game</button>
+	</div> <!--CLOSE 10-->
+
+<div id="study11" style="display: none;"> <!--OPEN 11-->
+			<p>STUDY LEVEL 11</p>
+			<img src="11Slide1.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="11Slide2.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="11Slide3.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="11Slide4.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="11Slide5.jpg" alt="Cropped Image" width=100% height="150">
+<br><br>
+<a href="https://www.youtube.com/watch?v=5uipv8W-tqQ" target="_blank"> Watch Video Tutorial </a>
+<br><br>
+			<p>Study end here.</p>
+			<button onclick="backGame()" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Game</button>
+	</div><!--CLOSE 11-->
+
+
+<div id="study12" style="display: none;"> <!--OPEN 12-->
+			<p>STUDY LEVEL 12</p>
+			<img src="12Slide1.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="12Slide2.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="12Slide3.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="12Slide4.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="12Slide5.jpg" alt="Cropped Image" width=100% height="150">
+<br><br>
+<a href="https://www.youtube.com/watch?v=5uipv8W-tqQ" target="_blank"> Watch Video Tutorial </a>
+<br><br>
+			<p>Study end here.</p>
+			<button onclick="backGame()" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Game</button>
+	</div> <!--CLOSE 12-->
+
+<div id="study13" style="display: none;"> <!--OPEN 13-->
+			<p>STUDY LEVEL 13</p>
+			<img src="13Slide1.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="13Slide2.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="13Slide3.jpg" alt="Cropped Image" width=100% height="150">
+<br><br>
+<a href="https://www.youtube.com/watch?v=eDTAlvrDWyk" target="_blank"> Watch Video Tutorial </a>
+<br><br>
+			<p>Study end here.</p>
+			<button onclick="backGame()" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Game</button>
+	</div><!--CLOSE 13-->
+
+
+<div id="study14" style="display: none;"> <!--OPEN 14-->
+			<p>STUDY LEVEL 14</p>
+			<img src="14Slide1.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="14Slide2.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="14Slide3.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="14Slide4.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="14Slide5.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="14Slide6.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="14Slide7.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="14Slide8.jpg" alt="Cropped Image" width=100% height="150">
+<br><br>
+<a href="https://www.youtube.com/watch?v=7mrqrAatSWs" target="_blank"> Watch Video Tutorial </a>
+<br><br>
+			<p>Study end here.</p>
+			<button onclick="backGame()" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Game</button>
+	</div> <!--CLOSE 14-->
+
+<div id="study15" style="display: none;"> <!--OPEN 15-->
+			<p>STUDY LEVEL 15</p>
+			<img src="15Slide1.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="15Slide2.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="15Slide3.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="15Slide4.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="15Slide5.jpg" alt="Cropped Image" width=100% height="150">
+			<img src="15Slide6.jpg" alt="Cropped Image" width=100% height="150">
+<br><br>
+<a href="https://www.youtube.com/watch?v=eDTAlvrDWyk" target="_blank"> Watch Video Tutorial</a>
+<br><br>
+
+			<p>Study end here.</p>
+			<button onclick="backGame()" style="background:turquoise;box-shadow:0 5px 5px rgba(0,0,0,0.2);">Back to Game</button>
+	</div> <!--CLOSE 15-->
+
+
+
+
+</div> <!--ALL STUDY ROOM CLOSE-->
+</center>
+<!--STUDY ROOM CLOSE-->
+
+
+<script>
+//INTRO SET TIME TO DISAPPEAR
+
+setTimeout(() => {//open
+	intro.style.display ="none";
+}, 11000); //close
+
+//INTRO LOADING ANIMATION OPEN 
+
+        // JavaScript for loading bar animation
+        let width = 0;
+        const loadingBar = document.getElementById("loadingBar");
+
+        // Update the loading bar width over time
+        const interval = setInterval(() => {
+            if (width >= 100) {
+                clearInterval(interval);
+                loadingBar.innerHTML = "Completed!";
+            } else {
+                width++;
+                loadingBar.style.width = width + "%";
+                loadingBar.innerHTML = width + "%";
+            }
+        }, 100); // Adjust the speed by changing this value (e.g., 50 ms for smoother animation)
+
+//INTRO LOADING ANIMATION CLOSE
+
+
+//COPY START
+  // User Authentication Data
+  const users = JSON.parse(localStorage.getItem('users')) || {};
+
+  // DOM Elements
+  const authPage = document.getElementById('authPage');
+  const signUpPage = document.getElementById('signUpPage');
+  const loginPage = document.getElementById('loginPage');
+  const gamePage = document.getElementById('gamePage');
+  const accountDisplay = document.getElementById('accountDisplay');
+ //const inputBox = document.getElementById('inputBox');
+
+  let score = 0;
+  let clickCount = 0;
+  let currentAnswer = 0;
+  let gameActive = true;
+
+// SCORE CONTROL 1 OPEN
+    let isNewQuestion = false; // To ensure only one score per start click
+// SCORE CONTROL 1 CLOSE
+
+
+  // Navigation Between Pages
+  document.getElementById('signUpButton').onclick = () => {
+    authPage.style.display = 'none';
+    signUpPage.style.display = 'block';
+  };
+
+  document.getElementById('loginButton').onclick = () => {
+    authPage.style.display = 'none';
+    loginPage.style.display = 'block';
+  };
+
+  // Register New User
+  document.getElementById('registerButton').onclick = () => {
+    const account = document.getElementById('newAccount').value;
+    const password = document.getElementById('newPassword').value;
+
+    if (account && password) {
+      users[account] = { password, score: 0, clickCount: 0 };
+      localStorage.setItem('users', JSON.stringify(users));
+      alert('Registration Successful!');
+      signUpPage.style.display = 'none';
+      authPage.style.display = 'block';
+    } else {
+      alert('Please enter a valid account number and password.');
+    }
+  };
+
+function Backbutton(){//open
+      signUpPage.style.display = 'none';
+      loginPage.style.display = 'none';
+      authPage.style.display = 'block';
+}//close
+
+  // Log In Existing User
+  //document.getElementById('loginSubmitButton').onclick = () => {
+function loginSubmitButton(){
+    const account = document.getElementById('loginAccount').value;
+    const password = document.getElementById('loginPassword').value;
+
+    if (users[account] && users[account].password === password) {
+      localStorage.setItem('currentUser', account);
+      loginPage.style.display = 'none';
+      CoverPage.style.display = 'block';
+	ScoreClicks.style.display = 'block';
+    
+      loadGameState();
+    } else {
+      alert('Invalid login credentials.');
+    }
+  };
+
+
+
+  // Load Game State
+  function loadGameState() {
+    const account = localStorage.getItem('currentUser');
+    score = users[account].score;
+    clickCount = users[account].clickCount;
+
+    accountDisplay.innerText = 'Account: ' + account.toUpperCase();
+
+    document.getElementById('score').innerText = 'Score: ' + score;
+    document.getElementById('clicks').innerText = 'Item: ' + clickCount+' of 75';
+	  document.getElementById('accountko').innerText = 'Account: ' + account.toUpperCase();
+	const remainder = score % 5;
+	const mylevel = (score-remainder)/5-(-1);
+   document.getElementById('levelko').innerText = 'Current Level: ' + mylevel;
+  }
+
+//////COPY END 
+
+
+//HOME OPEN 
+function Home() {
+	study.style.display = 'none';
+	gamePage.style.display = 'none';
+      CoverPage.style.display = 'block';
+	study.style.display = 'none';
+  }
+
+//HOME CLOSE
+
+
+
+
+
+
+
+//CHECKING CURRENT LEVEL 
+ 
+//MAG ADD UG LEVEL 1/6 
+
+function CheckLevel() {//check open 
+	
+    if (score < 5){
+	alert("Hi! Welcome to Level 1!");
+
+ShowMe();
+Stop();
+function Stop() {
+            document.getElementById("animatelevel1").style.display = 'none';
+	    setTimeout(Stop, 4500);
+        }
+playAudio2();
+ShowMe();
+//clickCount--;
+	document.getElementById('newlevel').innerText = 'LEVEL 1';
+	document.getElementById('category').innerText = 'Introduction in Prime Numbers';
+	CoverPage.style.display = 'none';
+      	gamePage.style.display = 'block';
+	
+
+	}
+
+    if (score > 4 && score < 10){
+
+alert("Hi! Welcome to Level 2!");
+ShowMe2();
+Stop2();
+function Stop2() {
+            document.getElementById("animatelevel2").style.display = 'none';
+	    setTimeout(Stop2, 5000);
+        }
+playAudio2();
+ShowMe2();
+	document.getElementById('newlevel').innerText = 'LEVEL 2';
+	document.getElementById('category').innerText = 'Basic Prime Numbers';
+	CoverPage.style.display = 'none';
+      gamePage.style.display = 'block';
+	}
+
+ if (score > 9 && score < 15){
+
+alert("Hi! Welcome to Level 3!");
+ShowMe3();
+Stop3();
+function Stop3() {
+            document.getElementById("animatelevel3").style.display = 'none';
+	    setTimeout(Stop3, 6000);
+        }
+playAudio2();
+ShowMe3();
+
+	document.getElementById('newlevel').innerText = 'LEVEL 3';
+	document.getElementById('category').innerText = 'Prime Factors of a Number';
+	CoverPage.style.display = 'none';
+      gamePage.style.display = 'block';
+	}
+
+ if (score > 14 && score < 20){
+
+alert("Hi! Welcome to Level 4!");
+ShowMe4();
+Stop4();
+function Stop4() {
+            document.getElementById("animatelevel4").style.display = 'none';
+	    setTimeout(Stop4, 6000);
+        }
+playAudio2();
+ShowMe4();
+document.getElementById('newlevel').innerText = 'LEVEL 4';
+	document.getElementById('category').innerText = 'More Prime Factors';
+	CoverPage.style.display = 'none';
+      gamePage.style.display = 'block';
+	}
+
+if (score > 19 && score < 25){
+
+alert("Hi! Welcome to Level 5!");
+ShowMe5();
+Stop5();
+function Stop5() {
+            document.getElementById("animatelevel5").style.display = 'none';
+	    setTimeout(Stop5, 6000);
+        }
+playAudio2();
+ShowMe5();
+document.getElementById('newlevel').innerText = 'LEVEL 5';
+	document.getElementById('category').innerText = 'Simplifying Fraction';
+	CoverPage.style.display = 'none';
+      gamePage.style.display = 'block';
+	}
+
+if (score > 24 && score < 30){
+
+alert("Hi! Welcome to Level 6!");
+ShowMe6();
+Stop6();
+function Stop6() {
+            document.getElementById("animatelevel6").style.display = 'none';
+	    setTimeout(Stop6, 6000);
+        }
+playAudio2();
+ShowMe6();
+document.getElementById('newlevel').innerText = 'LEVEL 6';
+	document.getElementById('category').innerText = 'Multiplying Simple Fractions';
+	CoverPage.style.display = 'none';
+      gamePage.style.display = 'block';
+	}
+
+if (score > 29 && score < 35){
+
+alert("Hi! Welcome to Level 7!");
+ShowMe7();
+Stop7();
+function Stop7() {
+            document.getElementById("animatelevel7").style.display = 'none';
+	    setTimeout(Stop7, 5000);
+        }
+playAudio2();
+ShowMe7();
+document.getElementById('newlevel').innerText = 'LEVEL 7';
+	document.getElementById('category').innerText = 'Multiplying Large Values of Fractions';
+	CoverPage.style.display = 'none';
+      gamePage.style.display = 'block';
+	}
+
+if (score > 34 && score < 40){
+
+alert("Hi! Welcome to Level 8!");
+ShowMe8();
+Stop8();
+function Stop8() {
+            document.getElementById("animatelevel8").style.display = 'none';
+	    setTimeout(Stop8, 5000);
+        }
+playAudio2();
+ShowMe8();
+document.getElementById('newlevel').innerText = 'LEVEL 8';
+	document.getElementById('category').innerText = 'Multiplying Mixed Numbers';
+	CoverPage.style.display = 'none';
+      gamePage.style.display = 'block';
+	}
+
+if (score > 39 && score < 45){
+
+alert("Hi! Welcome to Level 9!");
+ShowMe9();
+Stop9();
+function Stop9() {
+            document.getElementById("animatelevel9").style.display = 'none';
+	    setTimeout(Stop9, 5000);
+        }
+playAudio2();
+ShowMe9();
+document.getElementById('newlevel').innerText = 'LEVEL 9';
+	document.getElementById('category').innerText = 'Multiplying Negative Fractions';
+	CoverPage.style.display = 'none';
+      gamePage.style.display = 'block';
+	}
+
+if (score > 44 && score < 50){ //OPEN LEVEL 10
+
+alert("Hi! Welcome to Level 10!");
+ShowMe10();
+Stop10();
+function Stop10() {
+            document.getElementById("animatelevel10").style.display = 'none';
+	    setTimeout(Stop10, 5000);
+        }
+playAudio2();
+ShowMe10();
+document.getElementById('newlevel').innerText = 'LEVEL 10';
+	document.getElementById('category').innerText = 'Multiplying Negative Mixed Numbers';
+	CoverPage.style.display = 'none';
+      gamePage.style.display = 'block';
+	}//CLOSE LEVEL 10
+
+if (score > 49 && score < 55){ //OPEN LEVEL 11
+
+alert("Hi! Welcome to Level 11!");
+ShowMe11();
+Stop11();
+function Stop11() {
+            document.getElementById("animatelevel11").style.display = 'none';
+	    setTimeout(Stop11, 5000);
+        }
+playAudio2();
+ShowMe11();
+document.getElementById('newlevel').innerText = 'LEVEL 11';
+	document.getElementById('category').innerText = 'Dividing Simple Fractions';
+	CoverPage.style.display = 'none';
+      gamePage.style.display = 'block';
+	}//CLOSE LEVEL 11
+
+
+if (score > 54 && score < 60){ //OPEN LEVEL 12
+
+alert("Hi! Welcome to Level 12!");
+ShowMe12();
+Stop12();
+function Stop12() {
+            document.getElementById("animatelevel12").style.display = 'none';
+	    setTimeout(Stop12, 5000);
+        }
+playAudio2();
+ShowMe12();
+document.getElementById('newlevel').innerText = 'LEVEL 12';
+	document.getElementById('category').innerText = 'Dividing Large Values of Fractions';
+	CoverPage.style.display = 'none';
+      gamePage.style.display = 'block';
+	}//CLOSE LEVEL 12
+
+if (score > 59 && score < 65){ //OPEN LEVEL 13
+
+alert("Hi! Welcome to Level 13!");
+ShowMe13();
+Stop13();
+function Stop13() {
+            document.getElementById("animatelevel13").style.display = 'none';
+	    setTimeout(Stop13, 5000);
+        }
+playAudio2();
+ShowMe13();
+document.getElementById('newlevel').innerText = 'LEVEL 13';
+	document.getElementById('category').innerText = 'Dividing Mixed Numbers';
+	CoverPage.style.display = 'none';
+      gamePage.style.display = 'block';
+	}//CLOSE LEVEL 13
+
+if (score > 64 && score < 70){ //OPEN LEVEL 14
+
+alert("Hi! Welcome to Level 14!");
+ShowMe14();
+Stop14();
+function Stop14() {
+            document.getElementById("animatelevel14").style.display = 'none';
+	    setTimeout(Stop14, 5000);
+        }
+playAudio2();
+ShowMe14();
+document.getElementById('newlevel').innerText = 'LEVEL 14';
+	document.getElementById('category').innerText = 'Dividing Negative Fractions';
+	CoverPage.style.display = 'none';
+      gamePage.style.display = 'block';
+	}//CLOSE LEVEL 14
+
+if (score > 69 && score < 75){ //OPEN LEVEL 15
+
+alert("Hi! Welcome to Level 15!");
+ShowMe15();
+Stop15();
+function Stop15() {
+            document.getElementById("animatelevel15").style.display = 'none';
+	    setTimeout(Stop15, 5000);
+        }
+playAudio2();
+ShowMe15();
+document.getElementById('newlevel').innerText = 'LEVEL 15';
+	document.getElementById('category').innerText = 'Dividing Negative Mixed Numbers';
+	CoverPage.style.display = 'none';
+      gamePage.style.display = 'block';
+	}//CLOSE LEVEL 15
+
+
+
+if (score >74){
+alert('Game Finished! Your total score is 75/75');
+refresh();
+	}
+
+
+  }//check close 
+
+
+
+
+//timer per item open
+const timerElement = document.getElementById('timer');
+    let timeRemaining = 60; // 60 seconds
+    let timerInterval;
+
+    // Start the timer
+    function startTimer() {
+      clearInterval(timerInterval); // Clear any existing interval
+      timerElement.textContent = timeRemaining; // Display the initial time
+
+      timerInterval = setInterval(() => {
+        timerElement.textContent = timeRemaining;
+
+        if (timeRemaining > 0) {
+          timeRemaining--;
+		//buttonew.style.display="none";
+        } else {
+		//buttonew.style.display="block";
+          clearInterval(timerInterval);
+      //score--;
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+        
+Home();  
+
+	//window.location.href = "index.html"; // Redirect to home page
+        }
+      }, 1000);
+    }
+
+    // Restart the timer
+    function restartTimer() {
+      timeRemaining = 60; // Reset timer to 40 seconds
+      startTimer(); // Start the timer again
+    }
+//timer per item close
+
+
+
+
+
+  // Start Button Logic FOR LEVEL 1 OPEN 
+//MAG ADD UG LEVEL 2/6 
+  function startButton() { //start button open 
+    if (!gameActive) return;
+result2.style.display="none";
+
+
+
+if(score < 5){ //GIVEN 1 OPEN level 1
+
+    const num1 = Math.floor(Math.random() * 10);
+    const num2 = Math.floor(Math.random() * 10);
+    const num3 = Math.floor(Math.random() * 10);
+    const shuffle1 = Math.floor(Math.random() * 3);//para shuffle sa 3 choices
+
+	const prime1 = [2,3,5,7,11,13,17,19,23,29] //range 
+	const notprime2 = [4,6,8,9,10,12,14,15,16,18]
+	const notprime3 = [20,21,22,24,25,26,27,28,30,32]
+
+	const a = notprime3[num1];	
+	const b = notprime2[num2];	
+	const c = prime1[num3];	
+	
+
+    currentAnswer = c;
+// SCORE CONTROL 2 OPEN
+	isNewQuestion = true; // New question generated
+// SCORE CONTROL 2 CLOSE
+
+	if(shuffle1 === 0){
+    document.getElementById('question').innerText = `Which is a prime number among ${c}, ${a} and ${b}?`;
+	}
+if(shuffle1 === 1){
+    document.getElementById('question').innerText = `Which is a prime number among ${b}, ${c} and ${a}?`;
+	}
+if(shuffle1 === 2){
+    document.getElementById('question').innerText = `Which is a prime number among ${a}, ${b} and ${c}?`;
+	}
+
+}//GIVEN 1 CLOSE
+
+
+if(score > 4 && score < 10){ //GIVEN 2 OPEN level 2
+
+     const num1 = Math.floor(Math.random() * 10);
+    const num2 = Math.floor(Math.random() * 10);
+    const num3 = Math.floor(Math.random() * 10);
+    const shuffle1 = Math.floor(Math.random() * 3);//para shuffle sa 3 choices
+
+	const prime1 = [47,29,31,37,41,43,53,59,61,67] //range 
+	const notprime2 = [44,45,46,48,49,50,51,52,54,55]
+	const notprime3 = [30,32,33,34,35,36,38,39,40,42]
+
+	const a = notprime3[num1];	
+	const b = notprime2[num2];	
+	const c = prime1[num3];	
+	
+
+    currentAnswer = c;
+// SCORE CONTROL 2 OPEN
+	isNewQuestion = true; // New question generated
+// SCORE CONTROL 2 CLOSE
+
+if(shuffle1 === 0){
+    document.getElementById('question').innerText = `Which is a prime number among ${c}, ${a} and ${b}?`;
+	}
+if(shuffle1 === 1){
+    document.getElementById('question').innerText = `Which is a prime number among ${b}, ${c} and ${a}?`;
+	}
+if(shuffle1 === 2){
+    document.getElementById('question').innerText = `Which is a prime number among ${a}, ${b} and ${c}?`;
+	}
+
+}//GIVEN 2 CLOSE
+
+
+if(score > 9 && score < 15){ //GIVEN 3 OPEN level 3
+
+inputBox.style.display = 'block';
+
+     	const num1 = Math.floor(Math.random() * 17);
+	//const num2 = Math.floor(Math.random() * 2);
+	//const num3 = Math.floor(Math.random() * 2);
+
+	 const number1 = [2, 2, 2, 2, 2,  3, 3,  3,  3,  3, 5, 5, 5, 5,  7,  7,  7] //range of factorale numbers
+	const number2 =  [2, 3, 5, 7, 11, 3, 5,  7, 11, 13, 5, 7, 11, 13, 7, 11, 13]
+	
+	const selectnumber1 = number1[num1];
+	const selectnumber2 = number2[num1];
+
+
+	const multiply = selectnumber1*selectnumber2;
+
+document.getElementById('question').innerText = `Find all the prime factors of ${multiply}.`;
+
+		const code1 = selectnumber1*selectnumber2*selectnumber2+13;	
+		currentAnswer = code1;
+		
+
+	
+
+
+// SCORE CONTROL 2 OPEN
+	isNewQuestion = true; // New question generated
+// SCORE CONTROL 2 CLOSE
+}//GIVEN 3 CLOSE
+
+
+
+if(score > 14 && score < 20){ //GIVEN 4 OPEN level 4
+
+inputBox.style.display = 'none';
+inputBox2.style.display = 'block';
+
+     	const num1 = Math.floor(Math.random() * 15);
+	//const num2 = Math.floor(Math.random() * 3);
+	//const num3 = Math.floor(Math.random() * 3);
+
+	 const number1 = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3] //range of factorale numbers
+	const number2 =  [2, 2, 2, 2, 3, 3, 3, 5, 5, 7, 3, 3, 3, 5, 5]
+	const number3 =  [2, 3, 5, 7, 3, 5, 7, 5, 7, 7, 3, 5, 7, 5, 7]
+	
+	const selectnumber1 = number1[num1];
+	const selectnumber2 = number2[num1];
+	const selectnumber3 = number3[num1];
+
+	const multiply = selectnumber1*selectnumber2*selectnumber3;
+
+	document.getElementById('question').innerText = `Find all the prime factors of ${multiply}.`;
+
+		const code1 = selectnumber1*selectnumber2*selectnumber2*selectnumber3*selectnumber3*selectnumber3+13;	
+		currentAnswer = code1;
+		
+// SCORE CONTROL 2 OPEN
+	isNewQuestion = true; // New question generated
+// SCORE CONTROL 2 CLOSE
+}//GIVEN 4 CLOSE
+
+if(score > 19 && score < 25){ //GIVEN 5 OPEN level 5
+
+inputBox2.style.display = 'none';
+fraction1.style.display = 'block';
+question.style.display = 'none';
+question2.style.display = 'block';
+fractionlevel5.style.display = 'block';
+note1.style.display = 'none';
+     	const num1 = Math.floor(Math.random() * 15);
+	
+	 const number1 = [18, 14,  33, 15, 35, 22, 39, 34, 24, 17, 36, 20, 63, 48, 10] //range of factorale numbers
+	 const number2 = [2,   7,  11,  3, 5,  2,  3,  2,  4,  17, 12, 5,  9,  6,  1]
+
+	const numerator = number1[num1];
+	const denominator = number2[num1];
+
+	    document.getElementById('numerator').innerText = numerator;
+            document.getElementById('denominator').innerText = denominator;
+
+
+	const divide = numerator/denominator;
+	currentAnswer = divide;
+
+
+		
+// SCORE CONTROL 2 OPEN
+	isNewQuestion = true; // New question generated
+// SCORE CONTROL 2 CLOSE
+}//GIVEN 5 CLOSE
+
+
+
+if(score > 24 && score < 30){ //GIVEN 6 OPEN level 6
+
+question2.style.display = 'none';
+spacelevel6.style.display = 'none';
+fractionlevel5.style.display = 'none';
+question6.style.display = 'block';
+
+
+     	const num1 = Math.floor(Math.random() * 25);
+
+ 	const number1 = [1,    1,    1,       1,      1,     2,    2,      6,      9,      12,      6,     15,     12,    6,  12,	11,      8,       9,     10,    15,    8,     17,     9,    19,    2] //range of factorale numbers
+	 
+	const number2 = [2,   3,    4,      5,        6,     3,    5,      4,      2,      3,      9,      2,     4,    3,    5,	5,      2,       3,     1,    3,    2,     2,     1,    5,    1]
+
+
+	 const number3 = [2,   3,     4,      5,      6,     3,     10,      6,     4,       3,     6,     4,     7,     3,    10,	5,      6,       13,     7,    15,    8,     6,     2,    5,    10] //range of factorale numbers
+
+	 const number4 = [1,   1,     1,      1,      1,     1,     2,      3,     9,	    2,     1,      6,     3,     2,    3,	1,      2,       3,     5,    5,    2,     3,     1,    1,    1]
+	
+
+	const numerator3 = number1[num1];
+	const denominator3 = number2[num1];
+	const numerator2 = number3[num1];
+	const denominator2 = number4[num1];
+
+
+	    document.getElementById('numerator3').innerText = numerator3;
+            document.getElementById('denominator3').innerText = denominator3;
+		document.getElementById('numerator2').innerText = numerator2;
+            document.getElementById('denominator2').innerText = denominator2;
+
+ 	const divide = (numerator3*numerator2)/(denominator3*denominator2);
+	currentAnswer = divide;
+
+	
+
+
+		
+// SCORE CONTROL 2 OPEN
+	isNewQuestion = true; // New question generated
+// SCORE CONTROL 2 CLOSE
+
+    //document.getElementById('question').innerText = `Find all the prime factors of ${a}.`;
+}//GIVEN 6 CLOSE
+
+
+if(score > 29 && score < 35){ //GIVEN 7 OPEN level 7
+
+question6.style.display = 'none';
+inputBox3.style.display = 'block';
+question7.style.display = 'block';
+
+     	 const num1 = Math.floor(Math.random() * 25);
+	
+	 
+	
+ 	const number1 = [1,    2,    7,       1,      6,     2,    3,      2,      1,      1,      3,       2,     1,    1,    3,	1,      2,       3,     1,    2,    1,     1,    2,    7,       1] //range of factorale numbers
+	 const number2 = [2,   5,    11,      3,      1,     3,    4,      3,      5,      2,      25,      3,     3,    7,    4,	2,      3,       7,     6,    3,    8,     2,   5,    11,      3]
+		
+
+	 const number3 = [3,   3,     2,      3,      2,     3,     7,      4,     3,       2,     5,       5,     2,     1,    1,	1,      2,       3,     7,    2,    3,     3,   3,     2,      3] //range of factorale numbers
+	 const number4 = [4,   5,     3,      5,      15,    4,     8,      7,     8,	    3,     1,       6,     5,     4,    5,	2,      5,       7,     2,    3,    5,     4,   5,     3,      5]
+
+	 const number5 = [3,   6,     14,     1,       4,     1,    21,     8,     3,       1,     3,        5,    2,     1,    3,	1,      4,       9,     7,    4,    3,     3,   6,     14,     1] //range of factorale numbers
+	 const number6 = [8,   25,    33,     5,       5,     2,     32,    21,    40,	    3,     5,        9,    15,    28,   20,	4,      15,      49,     12,    9,    40,     8,   25,    33,     5]
+		//Answer:(3/8),(6/25),(14/33),(1/5),  (4/5), (1/2),(21/32),(8/21),(3/40),  (1/3),(3/5),     (5/9),(2/15),(1/28),(3/20)
+
+	const numerator3 = number1[num1];
+	const denominator3 = number2[num1];
+	const numerator2 = number3[num1];
+	const denominator2 = number4[num1];
+	const numerator4 = number5[num1];
+	const denominator4 = number6[num1];
+
+	    document.getElementById('numerator71').innerText = numerator3;
+            document.getElementById('denominator71').innerText = denominator3;
+		document.getElementById('numerator72').innerText = numerator2;
+            document.getElementById('denominator72').innerText = denominator2;
+	
+
+	const code3 = (numerator4*denominator4*denominator4)+35;
+	currentAnswer = code3;
+
+		
+// SCORE CONTROL 2 OPEN
+	isNewQuestion = true; // New question generated
+// SCORE CONTROL 2 CLOSE
+
+    //document.getElementById('question').innerText = `Find all the prime factors of ${a}.`;
+}//GIVEN 7 CLOSE
+
+
+
+if(score > 34 && score < 40){ //GIVEN 8 OPEN level 8
+
+inputBox3.style.display = 'none';
+question7.style.display = 'none';
+
+question8.style.display = 'block';
+inputBox4.style.display = 'block';
+question81.style.display = 'block';
+
+     	 const num1 = Math.floor(Math.random() * 25);
+	
+ 	 const whole1 = [1,  1,  1,	1,	1, 	1,	1,	9,	2,	2,	2,	2,	7,	2,	2,
+	2,	2,	3,	3,	3,	3,	3,	3,	3,	3] //range of factorale numbers
+	 const nume1 = [1,   2,  1,	2,	1,	1,	2,	1,	1,	1,	1,	1,	1,	2,	3,
+	4,	1,	1,	2,	3,	1,	1,	1,	3,	1]
+	 const deno1 = [2,   3,  4,	5,	6,	2,	7,	6,	2,	3,	4,	5,	2,	9,	8,
+	5,	7,	2,	4,	5,	3,	5,	3,	4,	5] //range of factorale numbers
+
+
+
+	 const whole2 = [2,  1,  2,	2,	1,	2,	1,	"",	2,	2,	1,	2,	"",	"",	2,
+	1,	2,	2,	1,	2,	2,	3,	1,	1,	1]
+	 const nume2 = [1,   2,  1,	1,	1,	1,	2,	1,	2,	1,	4,	5,	1,	1,	5,
+	1,	2,	5,	3,	4,	3,	1,	2,	2,	3] //range of factorale numbers
+	 const deno2 = [3,   5,  5,	2,	5,	3,	5,	5,	3,	4,	9,	11,	3,	2,	19,
+	4,	5,	7,	5,	9,	5,	2,	5,	3,	4]
+		
+
+ 	 const whole3 = [3,  2,  2,	3,	1,	3,	1,	1,	6,	5,	3,	5,	2,	1,	5,
+	3,	5,	9,	5,	8,	8,	11,	4,	6,	5]
+	 const nume3 = [1,   1,  3,	1,	2,	1,	4,	5,	2,	1,	1,	2,	1,	1,	3,
+	1,	1,	1,	3,	4,	2,	1,	2,	1,	3] //range of factorale numbers
+	 const deno3 = [2,   3,  4,	2,	5,	2,	5,	6,	3,	4,	4,	5,	2,	9,	8,
+	2,	7,	2,	5,	5,	3,	5,	3,	4,	5]
+		
+
+
+	const whole11 = whole1[num1];
+	const nume11 = nume1[num1];
+	const deno11 = deno1[num1];
+
+	const whole22 = whole2[num1];
+	const nume22 = nume2[num1];
+	const deno22 = deno2[num1];
+
+	const whole = whole3[num1];
+	const nume = nume3[num1];
+	const deno = deno3[num1];
+	
+
+	    document.getElementById('whole11').innerText = whole11;
+            document.getElementById('nume11').innerText = nume11;
+	    document.getElementById('deno11').innerText = deno11;
+
+	   document.getElementById('whole22').innerText = whole22;
+            document.getElementById('nume22').innerText = nume22;
+	    document.getElementById('deno22').innerText = deno22;
+
+
+	const code81 = (whole*nume*nume*deno*deno*deno)+14;
+	currentAnswer = code81;
+
+		
+// SCORE CONTROL 2 OPEN
+	isNewQuestion = true; // New question generated
+// SCORE CONTROL 2 CLOSE
+
+   //document.getElementById('question').innerText = `Find all the prime factors of ${code81} and ${nume3} .`;
+}//GIVEN 8 CLOSE
+
+
+if(score > 39 && score < 45){ //GIVEN 9 OPEN level 9
+
+question8.style.display = 'none';
+inputBox4.style.display = 'none';
+question81.style.display = 'none';
+
+inputBox9.style.display = 'block';
+question9.style.display = 'block';
+
+     	 const num19 = Math.floor(Math.random() * 25);
+
+
+ 	const number19 = [-1,    -2,    -7,       -1,      -6,     -2,    -3,      -2,      -1,      -1,      3,       2,     1,    1,    3,	1,      2,       3,     1,    2,    -1,     -1,    -2,    -7,       -1] //range of factorale numbers
+	 const number29 = [2,   5,    11,      3,      1,     3,    4,      3,      5,      2,      25,      3,     3,    7,    4,	2,      3,       7,     6,    3,    8,     2,   5,    11,      3]
+		
+
+	 const number39 = [3,   3,     2,      3,      2,     3,     7,      4,     3,       2,     -5,       -5,     -2,     -1,    -1,	-1,      -2,       -3,     -7,    -2,    -3,     -3,   -3,     -2,      -3] //range of factorale numbers
+	 const number49 = [4,   5,     3,      5,      15,    4,     8,      7,     8,	    3,     1,       6,     5,     4,    5,	2,      5,       7,     2,    3,    5,     4,   5,     3,      5]
+
+	 const number59 = [-3,   -6,     -14,     -1,       -4,     -1,    -21,     -8,     -3,       -1,     -3,        -5,    -2,     -1,    -3,	-1,      -4,       -9,     -7,    -4,    3,     3,   6,     14,     1] //range of factorale numbers
+	 const number69 = [8,   25,    33,     5,       5,     2,     32,    21,    40,	    3,     5,        9,    15,    28,   20,	4,      15,      49,     12,    9,    40,     8,   25,    33,     5]
+		//Answer:(3/8),(6/25),(14/33),(1/5),  (4/5), (1/2),(21/32),(8/21),(3/40),  (1/3),(3/5),     (5/9),(2/15),(1/28),(3/20)
+
+
+
+	const numerator39 = number19[num19];
+	const denominator39 = number29[num19];
+	const numerator29 = number39[num19];
+	const denominator29 = number49[num19];
+	const numerator49 = number59[num19];
+	const denominator49 = number69[num19];
+
+	    document.getElementById('numerator91').innerText = numerator39;
+            document.getElementById('denominator91').innerText = denominator39;
+		document.getElementById('numerator92').innerText = numerator29;
+            document.getElementById('denominator92').innerText = denominator29;
+	
+
+	const code39 = (numerator49*denominator49*denominator49)+35;
+	currentAnswer = code39;
+
+		
+// SCORE CONTROL 2 OPEN
+	isNewQuestion = true; // New question generated
+// SCORE CONTROL 2 CLOSE
+
+    //document.getElementById('question').innerText = `Find all the prime factors of ${a}.`;
+}//GIVEN 9 CLOSE
+
+
+if(score > 44 && score < 50){ //GIVEN 10 OPEN level 10
+
+inputBox9.style.display = 'none';
+question9.style.display = 'none';
+
+question10.style.display = 'block';
+inputBox10.style.display = 'block';
+question101.style.display = 'block';
+
+     	 const num10 = Math.floor(Math.random() * 25);
+
+ 	 const whole10 = [-1,  -1,  -1,	-1,	-1, 	-1,	-1,	-9,	-2,	-2,	2,	2,	7,	2,	2,
+	2,	2,	3,	3,	3,	-3,	-3,	-3,	-3,	-3] //range of factorale numbers
+	 const nume10 = [1,   2,  1,	2,	1,	1,	2,	1,	1,	1,	1,	1,	1,	2,	3,
+	4,	1,	1,	2,	3,	1,	1,	1,	3,	1]
+	 const deno10 = [2,   3,  4,	5,	6,	2,	7,	6,	2,	3,	4,	5,	2,	9,	8,
+	5,	7,	2,	4,	5,	3,	5,	3,	4,	5] //range of factorale numbers
+
+
+
+	 const whole20 = [2,  1,  2,	2,	1,	2,	1,	"",	2,	2,	-1,	-2,	"",	"",	-2,
+	-1,	-2,	-2,	-1,	-2,	-2,	-3,	-1,	-1,	-1]
+	 const nume20 = [1,   2,  1,	1,	1,	1,	2,	1,	2,	1,	4,	5,	-1,	-1,	5,
+	1,	2,	5,	3,	4,	3,	1,	2,	2,	3] //range of factorale numbers
+	 const deno20 = [3,   5,  5,	2,	5,	3,	5,	5,	3,	4,	9,	11,	3,	2,	19,
+	4,	5,	7,	5,	9,	5,	2,	5,	3,	4]
+		
+
+ 	 const whole30 = [-3,  -2,  -2,	-3,	-1,	-3,	-1,	-1,	-6,	-5,	-3,	-5,	-2,	-1,	-5,
+	-3,	-5,	-9,	-5,	-8,	8,	11,	4,	6,	5]
+	 const nume30 = [1,   1,  3,	1,	2,	1,	4,	5,	2,	1,	1,	2,	1,	1,	3,
+	1,	1,	1,	3,	4,	2,	1,	2,	1,	3] //range of factorale numbers
+	 const deno30 = [2,   3,  4,	2,	5,	2,	5,	6,	3,	4,	4,	5,	2,	9,	8,
+	2,	7,	2,	5,	5,	3,	5,	3,	4,	5]
+		
+	
+
+	const whole101 = whole10[num10];
+	const nume101 = nume10[num10];
+	const deno101 = deno10[num10];
+
+	const whole102 = whole20[num10];
+	const nume102 = nume20[num10];
+	const deno102 = deno20[num10];
+
+	const whole100 = whole30[num10];
+	const nume100 = nume30[num10];
+	const deno100 = deno30[num10];
+	
+
+	    document.getElementById('whole101').innerText = whole101;
+            document.getElementById('nume101').innerText = nume101;
+	    document.getElementById('deno101').innerText = deno101;
+
+	   document.getElementById('whole102').innerText = whole102;
+            document.getElementById('nume102').innerText = nume102;
+	    document.getElementById('deno102').innerText = deno102;
+
+
+	const code101 = (whole100*nume100*nume100*deno100*deno100*deno100)+14;
+	currentAnswer = code101;
+
+		
+// SCORE CONTROL 2 OPEN
+	isNewQuestion = true; // New question generated
+// SCORE CONTROL 2 CLOSE
+
+   //document.getElementById('question').innerText = `Find all the prime factors of ${code81} and ${nume3} .`;
+}//GIVEN 10 CLOSE
+
+
+if(score > 49 && score < 55){ //GIVEN 11 OPEN level 11
+
+question10.style.display = 'none';
+inputBox10.style.display = 'none';
+question101.style.display = 'none';
+
+question11.style.display = 'block';
+
+
+     	const num1 = Math.floor(Math.random() * 25);
+
+
+ 	const number1 = [1,    1,    1,       1,      1,     2,    2,      6,      9,      12,      6,     15,     12,    6,  12,	11,      8,       9,     10,    15,    8,     17,     9,    19,    2] //range of factorale numbers
+	 
+	const number2 = [2,   3,    4,      5,        6,     3,    5,      4,      2,      3,      9,      2,     4,    3,    5,	5,      2,       3,     1,    3,    2,     2,     1,    5,    1]
+
+
+	 const number4 = [2,   3,     4,      5,      6,     3,     10,      6,     4,       3,     6,     4,     7,     3,    10,	5,      6,       13,     7,    15,    8,     6,     2,    5,    10] //range of factorale numbers
+
+	 const number3 = [1,   1,     1,      1,      1,     1,     2,      3,     9,	    2,     1,      6,     3,     2,    3,	1,      2,       3,     5,    5,    2,     3,     1,    1,    1]
+
+
+
+	const ans11 = [1, 1, 1, 1, 1, 2, 2, 3, 2, 6, 4, 5, 7, 3, 8, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+
+	const numerator3 = number1[num1];
+	const denominator3 = number2[num1];
+	const numerator2 = number3[num1];
+	const denominator2 = number4[num1];
+
+
+	    document.getElementById('numerator111').innerText = numerator3;
+            document.getElementById('denominator111').innerText = denominator3;
+		document.getElementById('numerator112').innerText = numerator2;
+            document.getElementById('denominator112').innerText = denominator2;
+
+ 	const divide = ans11[num1];
+	currentAnswer = divide;
+
+	
+		
+// SCORE CONTROL 2 OPEN
+	isNewQuestion = true; // New question generated
+// SCORE CONTROL 2 CLOSE
+
+    //document.getElementById('question').innerText = `Find all the prime factors of ${a}.`;
+}//GIVEN 11 CLOSE
+
+
+if(score > 54 && score < 60){ //GIVEN 12 OPEN level 12
+
+question11.style.display = 'none';
+
+inputBox12.style.display = 'block';
+question12.style.display = 'block';
+
+     	 const num1 = Math.floor(Math.random() * 25);
+
+	
+ 	const number1 = [1,    2,    7,       1,      6,     2,    3,      2,      1,      1,      3,       2,     1,    1,    3,	1,      2,       3,     1,    2,    1,     1,    2,    7,       1] //range of factorale numbers
+	 const number2 = [2,   5,    11,      3,      1,     3,    4,      3,      5,      2,      25,      3,     3,    7,    4,	2,      3,       7,     6,    3,    8,     2,   5,    11,      3]
+		
+
+	 const number4 = [3,   3,     2,      3,      2,     3,     7,      4,     3,       2,     5,       5,     2,     1,    1,	1,      2,       3,     7,    2,    3,     3,   3,     2,      3] //range of factorale numbers
+	 const number3 = [4,   5,     3,      5,      15,    4,     8,      7,     8,	    3,     1,       6,     5,     4,    5,	2,      5,       7,     2,    3,    5,     4,   5,     3,      5]
+
+	 const number5 = [3,   6,     14,     1,       4,     1,    21,     8,     3,       1,     3,        5,    2,     1,    3,	1,      4,       9,     7,    4,    3,     3,   6,     14,     1] //range of factorale numbers
+	 const number6 = [8,   25,    33,     5,       5,     2,     32,    21,    40,	    3,     5,        9,    15,    28,   20,	4,      15,      49,     12,    9,    40,     8,   25,    33,     5]
+
+
+
+	const numerator3 = number1[num1];
+	const denominator3 = number2[num1];
+	const numerator2 = number3[num1];
+	const denominator2 = number4[num1];
+	const numerator4 = number5[num1];
+	const denominator4 = number6[num1];
+
+	    document.getElementById('numerator121').innerText = numerator3;
+            document.getElementById('denominator121').innerText = denominator3;
+		document.getElementById('numerator122').innerText = numerator2;
+            document.getElementById('denominator122').innerText = denominator2;
+	
+
+	const code3 = (numerator4*denominator4*denominator4)+35;
+	currentAnswer = code3;
+
+		
+// SCORE CONTROL 2 OPEN
+	isNewQuestion = true; // New question generated
+// SCORE CONTROL 2 CLOSE
+
+    //document.getElementById('question').innerText = `Find all the prime factors of ${a}.`;
+}//GIVEN 12 CLOSE
+
+
+if(score > 59 && score < 65){ //GIVEN 13 OPEN level 13
+
+inputBox12.style.display = 'none';
+question12.style.display = 'none';
+
+question13.style.display = 'block';
+inputBox13.style.display = 'block';
+question131.style.display = 'block';
+
+     	 const num1 = Math.floor(Math.random() * 25);
+
+ 	 const whole3 = [1,  1,  1,	1,	1, 	1,	1,	9,	2,	2,	2,	2,	7,	2,	2,
+	2,	2,	3,	3,	3,	3,	3,	3,	3,	3] //range of factorale numbers
+	 const nume3 = [1,   2,  1,	2,	1,	1,	2,	1,	1,	1,	1,	1,	1,	2,	3,
+	4,	1,	1,	2,	3,	1,	1,	1,	3,	1]
+	 const deno3 = [2,   3,  4,	5,	6,	2,	7,	6,	2,	3,	4,	5,	2,	9,	8,
+	5,	7,	2,	4,	5,	3,	5,	3,	4,	5] //range of factorale numbers
+
+
+
+	 const whole2 = [2,  1,  2,	2,	1,	2,	1,	"",	2,	2,	1,	2,	"",	"",	2,
+	1,	2,	2,	1,	2,	2,	3,	1,	1,	1]
+	 const nume2 = [1,   2,  1,	1,	1,	1,	2,	1,	2,	1,	4,	5,	1,	1,	5,
+	1,	2,	5,	3,	4,	3,	1,	2,	2,	3] //range of factorale numbers
+	 const deno2 = [3,   5,  5,	2,	5,	3,	5,	5,	3,	4,	9,	11,	3,	2,	19,
+	4,	5,	7,	5,	9,	5,	2,	5,	3,	4]
+		
+
+ 	 const whole1 = [3,  2,  2,	3,	1,	3,	1,	1,	6,	5,	3,	5,	2,	1,	5,
+	3,	5,	9,	5,	8,	8,	11,	4,	6,	5]
+	 const nume1 = [1,   1,  3,	1,	2,	1,	4,	5,	2,	1,	1,	2,	1,	1,	3,
+	1,	1,	1,	3,	4,	2,	1,	2,	1,	3] //range of factorale numbers
+	 const deno1 = [2,   3,  4,	2,	5,	2,	5,	6,	3,	4,	4,	5,	2,	9,	8,
+	2,	7,	2,	5,	5,	3,	5,	3,	4,	5]
+
+
+
+	const whole11 = whole1[num1];
+	const nume11 = nume1[num1];
+	const deno11 = deno1[num1];
+
+	const whole22 = whole2[num1];
+	const nume22 = nume2[num1];
+	const deno22 = deno2[num1];
+
+	const whole = whole3[num1];
+	const nume = nume3[num1];
+	const deno = deno3[num1];
+	
+
+	    document.getElementById('whole131').innerText = whole11;
+            document.getElementById('nume131').innerText = nume11;
+	    document.getElementById('deno131').innerText = deno11;
+
+	   document.getElementById('whole132').innerText = whole22;
+            document.getElementById('nume132').innerText = nume22;
+	    document.getElementById('deno132').innerText = deno22;
+
+
+	const code81 = (whole*nume*nume*deno*deno*deno)+14;
+	currentAnswer = code81;
+
+		
+// SCORE CONTROL 2 OPEN
+	isNewQuestion = true; // New question generated
+// SCORE CONTROL 2 CLOSE
+
+   //document.getElementById('question').innerText = `Find all the prime factors of ${code81} and ${nume3} .`;
+}//GIVEN 13 CLOSE
+
+
+if(score > 64 && score < 70){ //GIVEN 14 OPEN level 14
+
+question13.style.display = 'none';
+inputBox13.style.display = 'none';
+question131.style.display = 'none';
+
+inputBox12.style.display = 'block';
+question12.style.display = 'block';
+
+     	 const num1 = Math.floor(Math.random() * 25);
+
+	
+ 	const number1 = [-1,    -2,    -7,       -1,      -6,     -2,    -3,      -2,      -1,      -1,      3,       2,     1,    1,    3,	1,      2,       3,     1,    2,    -1,     -1,    -2,    -7,       -1] //range of factorale numbers
+	 const number2 = [2,   5,    11,      3,      1,     3,    4,      3,      5,      2,      25,      3,     3,    7,    4,	2,      3,       7,     6,    3,    8,     2,   5,    11,      3]
+		
+
+	 const number4 = [3,   3,     2,      3,      2,     3,     7,      4,     3,       2,     5,       5,     2,     1,    1,	1,      2,       3,     7,    2,    3,     3,   3,     2,      3] //range of factorale numbers
+	 const number3 = [4,   5,     3,      5,      15,    4,     8,      7,     8,	    3,     -1,       -6,     -5,     -4,    -5,	-2,      -5,       -7,     -2,    -3,    -5,     -4,   -5,     -3,      -5]
+
+	 const number5 = [-3,   -6,     -14,     -1,       -4,     -1,    -21,     -8,     -3,       -1,     -3,        -5,    -2,     -1,    -3,	-1,      -4,       -9,     -7,    -4,    3,     3,   6,     14,     1] //range of factorale numbers
+	 const number6 = [8,   25,    33,     5,       5,     2,     32,    21,    40,	    3,     5,        9,    15,    28,   20,	4,      15,      49,     12,    9,    40,     8,   25,    33,     5]
+
+
+
+	const numerator3 = number1[num1];
+	const denominator3 = number2[num1];
+	const numerator2 = number3[num1];
+	const denominator2 = number4[num1];
+	const numerator4 = number5[num1];
+	const denominator4 = number6[num1];
+
+	    document.getElementById('numerator121').innerText = numerator3;
+            document.getElementById('denominator121').innerText = denominator3;
+		document.getElementById('numerator122').innerText = numerator2;
+            document.getElementById('denominator122').innerText = denominator2;
+	
+
+	const code3 = (numerator4*denominator4*denominator4)+35;
+	currentAnswer = code3;
+
+		
+// SCORE CONTROL 2 OPEN
+	isNewQuestion = true; // New question generated
+// SCORE CONTROL 2 CLOSE
+
+    //document.getElementById('question').innerText = `Find all the prime factors of ${a}.`;
+}//GIVEN 14 CLOSE
+
+
+if(score > 69 && score < 75){ //GIVEN 15 OPEN level 15
+
+inputBox12.style.display = 'none';
+question12.style.display = 'none';
+
+question13.style.display = 'block';
+inputBox13.style.display = 'block';
+question131.style.display = 'block';
+
+     	 const num1 = Math.floor(Math.random() * 25);
+
+
+ 	 const whole3 = [-1,  -1,  -1,	-1,	-1, 	-1,	-1,	-9,	-2,	-2,	-2,	-2,	-7,	-2,	-2,
+	-2,	-2,	-3,	-3,	-3,	3,	3,	3,	3,	3] //range of factorale numbers
+	 const nume3 = [1,   2,  1,	2,	1,	1,	2,	1,	1,	1,	1,	1,	1,	2,	3,
+	4,	1,	1,	2,	3,	1,	1,	1,	3,	1]
+	 const deno3 = [2,   3,  4,	5,	6,	2,	7,	6,	2,	3,	4,	5,	2,	9,	8,
+	5,	7,	2,	4,	5,	3,	5,	3,	4,	5] //range of factorale numbers
+
+
+
+	 const whole2 = [2,  1,  2,	2,	1,	2,	1,	"",	2,	2,	-1,	-2,	"",	"",	-2,
+	-1,	-2,	-2,	-1,	-2,	-2,	-3,	-1,	-1,	-1]
+	 const nume2 = [1,   2,  1,	1,	1,	1,	2,	1,	2,	1,	4,	5,	-1,	-1,	5,
+	1,	2,	5,	3,	4,	3,	1,	2,	2,	3] //range of factorale numbers
+	 const deno2 = [3,   5,  5,	2,	5,	3,	5,	5,	3,	4,	9,	11,	3,	2,	19,
+	4,	5,	7,	5,	9,	5,	2,	5,	3,	4]
+		
+
+ 	 const whole1 = [-3,  -2,  -2,	-3,	-1,	-3,	-1,	-1,	-6,	-5,	3,	5,	2,	1,	5,
+	3,	5,	9,	5,	8,	-8,	-11,	-4,	-6,	-5]
+	 const nume1 = [1,   1,  3,	1,	2,	1,	4,	5,	2,	1,	1,	2,	1,	1,	3,
+	1,	1,	1,	3,	4,	2,	1,	2,	1,	3] //range of factorale numbers
+	 const deno1 = [2,   3,  4,	2,	5,	2,	5,	6,	3,	4,	4,	5,	2,	9,	8,
+	2,	7,	2,	5,	5,	3,	5,	3,	4,	5]
+
+
+	const whole11 = whole1[num1];
+	const nume11 = nume1[num1];
+	const deno11 = deno1[num1];
+
+	const whole22 = whole2[num1];
+	const nume22 = nume2[num1];
+	const deno22 = deno2[num1];
+
+	const whole = whole3[num1];
+	const nume = nume3[num1];
+	const deno = deno3[num1];
+	
+
+	    document.getElementById('whole131').innerText = whole11;
+            document.getElementById('nume131').innerText = nume11;
+	    document.getElementById('deno131').innerText = deno11;
+
+	   document.getElementById('whole132').innerText = whole22;
+            document.getElementById('nume132').innerText = nume22;
+	    document.getElementById('deno132').innerText = deno22;
+
+
+	const code81 = (whole*nume*nume*deno*deno*deno)+14;
+	currentAnswer = code81;
+
+		
+// SCORE CONTROL 2 OPEN
+	isNewQuestion = true; // New question generated
+// SCORE CONTROL 2 CLOSE
+
+   //document.getElementById('question').innerText = `Find all the prime factors of ${code81} and ${nume3} .`;
+}//GIVEN 15 CLOSE
+
+
+
+
+
+
+
+    document.getElementById('userAnswer').value = '';
+    document.getElementById('result').innerText = '';
+
+    clickCount++;
+    updateGameState();
+
+
+
+
+
+
+
+//PARA MO STOP KUNG NAHUROT NA ANG CLICKS PER LEVEL
+//MAG ADD UG LEVEL 3/6  
+
+    if (clickCount === 6) { //to level 2
+     
+      checkGameResult();
+    }
+
+	if (clickCount === 11) { //to level 3
+  
+      checkGameResult2();
+    }
+
+if (clickCount === 16) { //to level 4
+  
+      checkGameResult3();
+    }
+
+if (clickCount === 21) { //to level 5
+  
+      checkGameResult4();
+    }
+
+if (clickCount === 26) { //to level 6
+  
+      checkGameResult5();
+    }
+
+if (clickCount === 31) { //to level 7
+  
+      checkGameResult6();
+    }
+
+if (clickCount === 36) { //to level 8
+  
+      checkGameResult7();
+    }
+
+if (clickCount === 41) { //to level 9
+  
+      checkGameResult8();
+    }
+
+if (clickCount === 46) { //to level 10
+  
+      checkGameResult9();
+    }
+
+if (clickCount === 51) { //to level 11
+  
+      checkGameResult10();
+    }
+
+if (clickCount === 56) { //to level 12
+  
+      checkGameResult11();
+    }
+
+if (clickCount === 61) { //to level 13
+  
+      checkGameResult12();
+    }
+
+if (clickCount === 66) { //to level 14
+  
+      checkGameResult13();
+    }
+if (clickCount === 71) { //to level 15
+  
+      checkGameResult14();
+    }
+
+if (clickCount === 76) { //to level all
+  
+      checkGameResult15();
+    }
+
+
+  }; //start button close
+
+
+
+
+
+
+
+
+//MAG ADD UG LEVEL 4/6  OPTIONAL 
+
+function finalize1(){ //finalize1 open
+write33.style.display="block";
+const userAnswer1 = parseInt(document.getElementById('userAnswer1').value);//userAnswer box
+const userAnswer2 = parseInt(document.getElementById('userAnswer2').value);//userAnswer box
+		document.getElementById('factor31').innerText = userAnswer1;
+		document.getElementById('factor32').innerText = userAnswer2;
+//const userAnswer2 = parseInt(document.getElementById('userAnswer2').value);
+
+			//if(selectnumber1 === userAnswer1 && selectnumber2 === userAnswer2 ){
+			//document.getElementById('answercode').innerText =`The code is ${code12}`;
+			document.getElementById('answercode').innerText = "CODE: "+(userAnswer1*userAnswer2*userAnswer2+13);
+			//}
+		}//finalize1 close 
+
+function finalize2(){ //finalize2 open
+write44.style.display="block";
+const userAnswer3 = parseInt(document.getElementById('userAnswer3').value);//userAnswer box
+const userAnswer4 = parseInt(document.getElementById('userAnswer4').value);//userAnswer box
+const userAnswer5 = parseInt(document.getElementById('userAnswer5').value);//userAnswer box
+		document.getElementById('factor41').innerText = userAnswer3;
+		document.getElementById('factor42').innerText = userAnswer4;
+		document.getElementById('factor43').innerText = userAnswer5;
+		
+			//if(selectnumber1 === userAnswer1 && selectnumber2 === userAnswer2 ){
+			//document.getElementById('answercode').innerText =`The code is ${code12}`;
+			document.getElementById('answercode2').innerText = "CODE: "+(userAnswer3*userAnswer4*userAnswer4*userAnswer5*userAnswer5*userAnswer5+13);
+			//}
+		}//finalize2 close 
+
+function finalize3(){ //finalize1 open
+write77.style.display="block";
+const userAnswer6 = parseInt(document.getElementById('userAnswer6').value);//userAnswer box
+const userAnswer7 = parseInt(document.getElementById('userAnswer7').value);//userAnswer box
+		document.getElementById('sup7').innerText = userAnswer6;
+		document.getElementById('sub7').innerText = userAnswer7;
+			document.getElementById('answercode3').innerText = "CODE: "+(userAnswer6*userAnswer7*userAnswer7+35);
+		}//finalize3 close
+
+function finalize8(){ //finalize8 open
+write88.style.display="block";
+const userAnswer80 = parseInt(document.getElementById('userAnswer80').value);//userAnswer box
+const userAnswer81 = parseInt(document.getElementById('userAnswer81').value);//userAnswer box
+const userAnswer82 = parseInt(document.getElementById('userAnswer82').value);//userAnswer box
+		document.getElementById('span8').innerText = userAnswer80;
+		document.getElementById('sup8').innerText = userAnswer81;
+		document.getElementById('sub8').innerText = userAnswer82;
+			document.getElementById('answercode8').innerText = "CODE: "+(userAnswer80*userAnswer81*userAnswer81*userAnswer82*userAnswer82*userAnswer82+14);
+		}//finalize8 close
+
+function finalize9(){ //finalize9 open
+write99.style.display="block";
+const userAnswer69 = parseInt(document.getElementById('userAnswer69').value);//userAnswer box
+const userAnswer79 = parseInt(document.getElementById('userAnswer79').value);//userAnswer box
+		document.getElementById('sup9').innerText = userAnswer69;
+		document.getElementById('sub9').innerText = userAnswer79;
+			document.getElementById('answercode9').innerText = "CODE: "+(userAnswer69*userAnswer79*userAnswer79+35);
+		}//finalize9 close
+
+
+function finalize10(){ //finalize10 open
+write1010.style.display="block";
+const userAnswer100 = parseInt(document.getElementById('userAnswer100').value);//userAnswer box
+const userAnswer101 = parseInt(document.getElementById('userAnswer101').value);//userAnswer box
+const userAnswer102 = parseInt(document.getElementById('userAnswer102').value);//userAnswer box
+		document.getElementById('span10').innerText = userAnswer100;
+		document.getElementById('sup10').innerText = userAnswer101;
+		document.getElementById('sub10').innerText = userAnswer102;
+			document.getElementById('answercode10').innerText = "CODE: "+(userAnswer100*userAnswer101*userAnswer101*userAnswer102*userAnswer102*userAnswer102+14);
+		}//finalize10 close
+
+
+function finalize12(){ //finalize12 open
+write1212.style.display="block";
+const userAnswer612 = parseInt(document.getElementById('userAnswer612').value);//userAnswer box
+const userAnswer712 = parseInt(document.getElementById('userAnswer712').value);//userAnswer box
+		document.getElementById('sup12').innerText = userAnswer612;
+		document.getElementById('sub12').innerText = userAnswer712;
+			document.getElementById('answercode12').innerText = "CODE: "+(userAnswer612*userAnswer712*userAnswer712+35);
+		}//finalize12 close
+
+function finalize13(){ //finalize8 open
+write1313.style.display="block";
+const userAnswer130 = parseInt(document.getElementById('userAnswer130').value);//userAnswer box
+const userAnswer131 = parseInt(document.getElementById('userAnswer131').value);//userAnswer box
+const userAnswer132 = parseInt(document.getElementById('userAnswer132').value);//userAnswer box
+		document.getElementById('span13').innerText = userAnswer130;
+		document.getElementById('sup13').innerText = userAnswer131;
+		document.getElementById('sub13').innerText = userAnswer132;
+			document.getElementById('answercode13').innerText = "CODE: "+(userAnswer130*userAnswer131*userAnswer131*userAnswer132*userAnswer132*userAnswer132+14);
+		}//finalize8 close
+
+
+
+
+  // Submit Answer Logic
+  document.getElementById('submitButton').onclick = () => {
+
+    const userAnswer = parseInt(document.getElementById('userAnswer').value);//userAnswer box 
+	
+
+     
+
+    if (isNewQuestion && userAnswer === currentAnswer) {
+      document.getElementById('result').innerText = 'Correct!'; 
+      timeRemaining = 40;
+      score++;
+
+      updateGameState();
+     
+
+// SCORE CONTROL 4 OPEN
+	} else if (!isNewQuestion) {
+        document.getElementById('result').innerText = 'Please start a new question!';
+// SCORE CONTROL 4 CLOSE
+
+    } else {
+	restart1.style.display="block";
+	result2.style.display="block";
+      document.getElementById('result').innerText = 'Wrong!';
+	document.getElementById('result2').innerText = 'Please restart the level.';
+    }
+// SCORE CONTROL 5 OPEN DELETE UPDATE AND CHANGE
+      // Update score display
+     // document.getElementById('score').innerText = `Score: ${score}`;
+
+	isNewQuestion = false; // Prevent scoring again for the same question
+// SCORE CONTROL 5 CLOSE DELETE UPDATE AND CHANGE
+
+  };
+
+
+
+
+
+
+  // Reset Button Logic
+  document.getElementById('resetButton').onclick = () => {
+    score = 0;
+    clickCount = 0;
+    gameActive = true;
+    updateGameState();
+  };
+
+
+
+ // Study First open 
+  document.getElementById('studyFirst1').onclick = () => {  
+study.style.display = 'block';
+
+if(score < 5){//open 1
+	ScoreClicks.style.display = 'none';
+	CoverPage.style.display = 'none';
+	gamePage.style.display = 'none';
+  	study1.style.display = 'block';
+}//close 1
+
+if(score > 4 && score < 10){//open 2
+	ScoreClicks.style.display = 'none';
+	CoverPage.style.display = 'none';
+	gamePage.style.display = 'none';
+  	study2.style.display = 'block';
+}//close 2
+
+if(score > 9 && score < 15){//open 3
+	ScoreClicks.style.display = 'none';
+	CoverPage.style.display = 'none';
+	gamePage.style.display = 'none';
+  	study3.style.display = 'block';
+}//close 3
+
+if(score > 14 && score < 20){//open 4
+	ScoreClicks.style.display = 'none';
+	CoverPage.style.display = 'none';
+	gamePage.style.display = 'none';
+  	study4.style.display = 'block';
+}//close 4
+
+if(score > 19 && score < 25){//open 5
+	ScoreClicks.style.display = 'none';
+	CoverPage.style.display = 'none';
+	gamePage.style.display = 'none';
+  	study5.style.display = 'block';
+}//close 5
+
+if(score > 24 && score < 30){//open 6
+	ScoreClicks.style.display = 'none';
+	CoverPage.style.display = 'none';
+	gamePage.style.display = 'none';
+  	study6.style.display = 'block';
+}//close 6
+
+if(score > 29 && score < 35){//open 7
+	ScoreClicks.style.display = 'none';
+	CoverPage.style.display = 'none';
+	gamePage.style.display = 'none';
+  	study7.style.display = 'block';
+}//close 7
+
+if(score > 34 && score < 40){//open 8
+	ScoreClicks.style.display = 'none';
+	CoverPage.style.display = 'none';
+	gamePage.style.display = 'none';
+  	study8.style.display = 'block';
+}//close 8
+
+if(score > 39 && score < 45){//open 9
+	ScoreClicks.style.display = 'none';
+	CoverPage.style.display = 'none';
+	gamePage.style.display = 'none';
+  	study9.style.display = 'block';
+}//close 9
+
+if(score > 44 && score < 50){//open 10
+	ScoreClicks.style.display = 'none';
+	CoverPage.style.display = 'none';
+	gamePage.style.display = 'none';
+  	study10.style.display = 'block';
+}//close 10
+
+if(score > 49 && score < 55){//open 11
+	ScoreClicks.style.display = 'none';
+	CoverPage.style.display = 'none';
+	gamePage.style.display = 'none';
+  	study11.style.display = 'block';
+}//close 11
+
+if(score > 54 && score < 60){//open 12
+	ScoreClicks.style.display = 'none';
+	CoverPage.style.display = 'none';
+	gamePage.style.display = 'none';
+  	study12.style.display = 'block';
+}//close 12
+
+if(score > 59 && score < 65){//open 13
+	ScoreClicks.style.display = 'none';
+	CoverPage.style.display = 'none';
+	gamePage.style.display = 'none';
+  	study13.style.display = 'block';
+}//close 13
+
+if(score > 64 && score < 70){//open 14
+	ScoreClicks.style.display = 'none';
+	CoverPage.style.display = 'none';
+	gamePage.style.display = 'none';
+  	study14.style.display = 'block';
+}//close 14
+
+if(score > 69 && score < 75){//open 15
+	ScoreClicks.style.display = 'none';
+	CoverPage.style.display = 'none';
+	gamePage.style.display = 'none';
+  	study15.style.display = 'block';
+}//close 15
+
+
+  };  
+// Study First close
+
+
+
+
+
+
+//BACK TO GAME OPEN 
+function backGame() {// back to game after study open 
+	
+    if (score < 5){
+	alert("Welcomeback to Level 1!");
+	document.getElementById('newlevel').innerText = 'LEVEL 1';
+	study1.style.display = 'none';
+	ScoreClicks.style.display = 'block';
+      	gamePage.style.display = 'block';
+
+	}
+
+    if (score > 4 && score < 10){
+	alert("Welcomeback to Level 2!");
+	document.getElementById('newlevel').innerText = 'LEVEL 2';
+	study2.style.display = 'none';
+	ScoreClicks.style.display = 'block';
+      	gamePage.style.display = 'block';
+	}
+
+    if (score > 9 && score < 15){
+	alert("Welcomeback to Level 3!");
+	document.getElementById('newlevel').innerText = 'LEVEL 3';
+	study3.style.display = 'none';
+	ScoreClicks.style.display = 'block';
+      	gamePage.style.display = 'block';
+	}
+
+    if (score > 14 && score < 20){
+	alert("Welcomeback to Level 4!");
+	document.getElementById('newlevel').innerText = 'LEVEL 4';
+	study4.style.display = 'none';
+	ScoreClicks.style.display = 'block';
+      	gamePage.style.display = 'block';
+	}
+
+    if (score > 19 && score < 25){
+	alert("Welcomeback to Level 5!");
+	document.getElementById('newlevel').innerText = 'LEVEL 5';
+	study5.style.display = 'none';
+	ScoreClicks.style.display = 'block';
+      	gamePage.style.display = 'block';
+	}
+
+    if (score > 24 && score < 30){
+	alert("Welcomeback to Level 6!");
+	document.getElementById('newlevel').innerText = 'LEVEL 6';
+	study6.style.display = 'none';
+	ScoreClicks.style.display = 'block';
+      	gamePage.style.display = 'block';
+	}
+
+    if (score > 29 && score < 35){
+	alert("Welcomeback to Level 7!");
+	document.getElementById('newlevel').innerText = 'LEVEL 7';
+	study7.style.display = 'none';
+	ScoreClicks.style.display = 'block';
+      	gamePage.style.display = 'block';
+	}
+
+    if (score > 34 && score < 40){
+	alert("Welcomeback to Level 8!");
+	document.getElementById('newlevel').innerText = 'LEVEL 8';
+	study8.style.display = 'none';
+	ScoreClicks.style.display = 'block';
+      	gamePage.style.display = 'block';
+	}
+
+    if (score > 39 && score < 45){
+	alert("Welcomeback to Level 9!");
+	document.getElementById('newlevel').innerText = 'LEVEL 9';
+	study9.style.display = 'none';
+	ScoreClicks.style.display = 'block';
+      	gamePage.style.display = 'block';
+	}
+
+    if (score > 44 && score < 50){
+	alert("Welcomeback to Level 10!");
+	document.getElementById('newlevel').innerText = 'LEVEL 10';
+	study10.style.display = 'none';
+	ScoreClicks.style.display = 'block';
+      	gamePage.style.display = 'block';
+	}
+
+    if (score > 49 && score < 55){
+	alert("Welcomeback to Level 11!");
+	document.getElementById('newlevel').innerText = 'LEVEL 11';
+	study11.style.display = 'none';
+	ScoreClicks.style.display = 'block';
+      	gamePage.style.display = 'block';
+	}
+
+    if (score > 54 && score < 60){
+	alert("Welcomeback to Level 12!");
+	document.getElementById('newlevel').innerText = 'LEVEL 12';
+	study12.style.display = 'none';
+	ScoreClicks.style.display = 'block';
+      	gamePage.style.display = 'block';
+	}
+
+    if (score > 59 && score < 65){
+	alert("Welcomeback to Level 13!");
+	document.getElementById('newlevel').innerText = 'LEVEL 13';
+	study13.style.display = 'none';
+	ScoreClicks.style.display = 'block';
+      	gamePage.style.display = 'block';
+	}
+
+    if (score > 64 && score < 70){
+	alert("Welcomeback to Level 14!");
+	document.getElementById('newlevel').innerText = 'LEVEL 14';
+	study14.style.display = 'none';
+	ScoreClicks.style.display = 'block';
+      	gamePage.style.display = 'block';
+	}
+
+    if (score > 69 && score < 75){
+	alert("Welcomeback to Level 15!");
+	document.getElementById('newlevel').innerText = 'LEVEL 15';
+	study15.style.display = 'none';
+	ScoreClicks.style.display = 'block';
+      	gamePage.style.display = 'block';
+	}
+
+
+
+}// back to game after study CLOSE
+//BACK TO GAME CLOSE
+
+
+
+//CLICK FIX OPEN 
+	function clickfix(){//open 
+const gap = clickCount-score;
+const fix = clickCount-gap-(-1);
+		//if(gap == 1){}
+		clickCount = fix;
+updateGameState();
+}//close
+//CLICK FIX CLOSE
+
+
+//DEDUCT OPEN 
+	function deduct(){//open 
+const remainder = score % 5;
+	if(remainder == 0){
+		updateGameState();
+	}
+	if(remainder > 0){
+		score--;
+		clickCount--;
+		updateGameState();
+	}
+}//close
+//DEDUCT CLOSE
+
+
+
+
+// Restart
+//MAG ADD UG LEVEL 5/6  #2
+  function restart() { //open restart
+
+result2.style.display="none";
+startButton();
+restart1.style.display="none";
+	if(score < 5){ // if score is 0 to 1, level 1
+		if(clickCount == 1){clickCount=1;}
+		if(clickCount > 1){clickCount--;}
+	}
+	
+	if(score > 4 && score < 10){ // if score is 2 to 3, level 2
+		if(clickCount == 6){clickCount=6;}
+		if(clickCount > 6){clickCount--;}
+	}
+
+	if(score > 9 && score < 15){// if score is 4 to 5, level 3
+		if(clickCount == 11){clickCount=11;}
+		if(clickCount > 11){clickCount--;}
+	}
+
+	if(score > 14 && score < 20){// if score is 6 to 7, level 4
+		if(clickCount == 16){clickCount=16;}
+		if(clickCount > 16){clickCount--;}
+	}
+
+	if(score > 19 && score < 25){// if score is 8 to 9, level 5
+		if(clickCount == 21){clickCount=21;}
+		if(clickCount > 21){clickCount--;}
+	}
+
+if(score > 24 && score < 30){// if score is 10 to 11, level 6
+		if(clickCount == 26){clickCount=26;}
+		if(clickCount > 26){clickCount--;}
+	}
+
+if(score > 29 && score < 35){// if score is 12 to 13, level 7
+		if(clickCount == 31){clickCount=31;}
+		if(clickCount > 31){clickCount--;}
+	}
+
+if(score > 34 && score < 40){// if score is 14 to 15, level 8
+		if(clickCount == 36){clickCount=36;}
+		if(clickCount > 36){clickCount--;}
+	}
+if(score > 39 && score < 45){// if score is 16 to 17, level 9
+		if(clickCount == 41){clickCount=41;}
+		if(clickCount > 41){clickCount--;}
+	}
+
+if(score > 44 && score < 50){// if score is 16 to 17, level 10
+		if(clickCount == 46){clickCount=46;}
+		if(clickCount > 46){clickCount--;}
+	}
+
+if(score > 49 && score < 55){// if score is 16 to 17, level 11
+		if(clickCount == 51){clickCount=51;}
+		if(clickCount > 51){clickCount--;}
+	}
+
+if(score > 54 && score < 60){// if score is 16 to 17, level 12
+		if(clickCount == 56){clickCount=56;}
+		if(clickCount > 56){clickCount--;}
+	}
+
+if(score > 59 && score < 65){// if score is 16 to 17, level 13
+		if(clickCount == 61){clickCount=61;}
+		if(clickCount > 61){clickCount--;}
+	}
+
+if(score > 64 && score < 70){// if score is 16 to 17, level 14
+		if(clickCount == 66){clickCount=66;}
+		if(clickCount > 66){clickCount--;}
+	}
+
+
+if(score > 69 && score < 75){// if score is 16 to 17, level 15
+		if(clickCount == 71){clickCount=71;}
+		if(clickCount > 71){clickCount--;}
+	}
+
+if(score > 75 && score < 80){// if score is 16 to 17, level all
+		if(clickCount == 76){clickCount=76;}
+		if(clickCount > 76){clickCount--;}
+	}
+
+
+    gameActive = true;
+    updateGameState();
+  }; //close restart
+
+
+
+// Refresh
+//MAG ADD UG LEVEL 5/6  
+  function refresh() { //open refresh
+
+	if(score < 5){ // if score is 0 to 1, level 1
+    score = 0;
+    clickCount = 1;
+	}
+	
+	if(score > 4 && score < 10){ // if score is 2 to 3, level 2
+    score = 5;
+    clickCount = 6;
+	}
+
+	if(score > 9 && score < 15){// if score is 4 to 5, level 3
+    score = 10;
+    clickCount = 11;
+	}
+
+	if(score > 14 && score < 20){// if score is 6 to 7, level 4
+    score = 15;
+    clickCount = 16;
+	}
+
+	if(score > 19 && score < 25){// if score is 8 to 9, level 5
+    score = 20;
+    clickCount = 21;
+	}
+
+if(score > 24 && score < 30){// if score is 10 to 11, level 6
+    score = 25;
+    clickCount = 26;
+	}
+
+if(score > 29 && score < 35){// if score is 12 to 13, level 7
+    score = 30;
+    clickCount = 31;
+	}
+
+if(score > 34 && score < 40){// if score is 14 to 15, level 8
+    score = 35;
+    clickCount = 36;
+	}
+if(score > 39 && score < 45){// if score is 16 to 17, level 9
+    score = 40;
+    clickCount = 41;
+	}
+
+if(score > 44 && score < 50){// if score is 16 to 17, level 10
+    score = 45;
+    clickCount = 46;
+	}
+
+if(score > 49 && score < 55){// if score is 16 to 17, level 11
+    score = 50;
+    clickCount = 51;
+	}
+
+if(score > 54 && score < 60){// if score is 16 to 17, level 12
+    score = 55;
+    clickCount = 56;
+	}
+
+if(score > 59 && score < 65){// if score is 16 to 17, level 13
+    score = 60;
+    clickCount = 61;
+	}
+
+if(score > 64 && score < 70){// if score is 16 to 17, level 14
+    score = 65;
+    clickCount = 66;
+	}
+
+
+if(score > 69 && score < 75){// if score is 16 to 17, level 15
+    score = 70;
+    clickCount = 71;
+	}
+
+if(score > 75 && score < 80){// if score is 16 to 17, level all
+    score = 75;
+    clickCount = 75;
+	}
+
+
+    gameActive = true;
+    updateGameState();
+  }; //close refresh
+
+
+
+
+
+
+  // Log Out Logic
+  document.getElementById('logoutButton').onclick = () => {
+    localStorage.removeItem('currentUser');
+    gamePage.style.display = 'none';
+    CoverPage.style.display = 'none';
+    ScoreClicks.style.display = 'none';
+    authPage.style.display = 'block';
+  };
+
+  // Update Game State in Local Storage
+  function updateGameState() {
+    const account = localStorage.getItem('currentUser');
+    users[account].score = score;
+    users[account].clickCount = clickCount;
+    localStorage.setItem('users', JSON.stringify(users));
+    document.getElementById('score').innerText = 'Score: ' + score;
+    document.getElementById('clicks').innerText = 'Item: ' + clickCount+' of 75';
+   document.getElementById('accountko').innerText = 'Account: ' + account.toUpperCase();
+	const remainder = score % 5;
+	const mylevel = (score-remainder)/5-(-1);
+   document.getElementById('levelko').innerText = 'Level: ' + mylevel;
+  }
+
+
+
+
+
+
+
+
+
+  // Check Game Result at 11 Clicks
+//MAG ADD UG LEVEL 6/6 
+
+  function checkGameResult() { //open 
+    if (score >4) {
+document.getElementById('nextlevel').innerText = 'LEVEL 1';
+	openPopup();
+	playAudio();
+	gamePage.style.display = 'block';
+    	//gamePage2.style.display = 'block';
+     document.getElementById('newlevel').innerText = 'LEVEL 2';
+    } else {
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+    }
+  }//close
+
+ function checkGameResult2() { //open 
+    if (score >9) {
+document.getElementById('nextlevel').innerText = 'LEVEL 2';
+	openPopup();
+	playAudio();
+	gamePage.style.display = 'block';
+    	//gamePage2.style.display = 'block';
+     document.getElementById('newlevel').innerText = 'LEVEL 3';
+    } else {
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+    }
+  }//close
+
+
+function checkGameResult3() { //open 
+    if (score >14) {
+document.getElementById('nextlevel').innerText = 'LEVEL 3';
+	openPopup();
+	playAudio();
+//alert('Congratulations! Welcome to LEVEL 4!');
+	gamePage.style.display = 'block';
+    	//CoverPage.style.display = 'block';
+document.getElementById('newlevel').innerText = 'LEVEL 4';
+    } else {
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+    }
+  }//close
+
+function checkGameResult4() { //open 
+    if (score >19) {
+document.getElementById('nextlevel').innerText = 'LEVEL 4';
+	openPopup();
+	playAudio();
+//alert('Congratulations! Welcome to LEVEL 5!');
+	gamePage.style.display = 'block';
+    	//CoverPage.style.display = 'block';
+document.getElementById('newlevel').innerText = 'LEVEL 5';
+    } else {
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+    }
+  }//close
+
+function checkGameResult5() { //open 
+    if (score >24) {
+document.getElementById('nextlevel').innerText = 'LEVEL 5';
+	openPopup();
+	playAudio();
+//alert('Congratulations! Welcome to LEVEL 6!');
+	gamePage.style.display = 'block';
+    	//CoverPage.style.display = 'block';
+document.getElementById('newlevel').innerText = 'LEVEL 6';
+    } else {
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+    }
+  }//close
+
+function checkGameResult6() { //open 
+    if (score >29) {
+document.getElementById('nextlevel').innerText = 'LEVEL 6';
+	openPopup();
+	playAudio();
+//alert('Congratulations! Welcome to LEVEL 7!');
+	gamePage.style.display = 'block';
+    	//CoverPage.style.display = 'block';
+document.getElementById('newlevel').innerText = 'LEVEL 7';
+    } else {
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+    }
+  }//close
+
+function checkGameResult7() { //open 
+    if (score >34) {
+document.getElementById('nextlevel').innerText = 'LEVEL 7';
+	openPopup();
+	playAudio();
+//alert('Congratulations! Welcome to LEVEL 8!');
+	gamePage.style.display = 'block';
+    	//CoverPage.style.display = 'block';
+document.getElementById('newlevel').innerText = 'LEVEL 8';
+    } else {
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+    }
+  }//close
+
+function checkGameResult8() { //open 
+    if (score >39) {
+document.getElementById('nextlevel').innerText = 'LEVEL 8';
+	openPopup();
+	playAudio();
+	gamePage.style.display = 'block';
+    	//CoverPage.style.display = 'block';
+document.getElementById('newlevel').innerText = 'LEVEL 9';
+    } else {
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+    }
+  }//close
+
+function checkGameResult9() { //open 
+    if (score >44) {
+document.getElementById('nextlevel').innerText = 'LEVEL 9';
+	openPopup();
+	playAudio();
+	gamePage.style.display = 'block';
+    	//CoverPage.style.display = 'block';
+document.getElementById('newlevel').innerText = 'LEVEL 10';
+    } else {
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+    }
+  }//close
+
+function checkGameResult10() { //open 
+    if (score >49) {
+document.getElementById('nextlevel').innerText = 'LEVEL 10';
+	openPopup();
+	playAudio();
+	gamePage.style.display = 'block';
+    	//CoverPage.style.display = 'block';
+document.getElementById('newlevel').innerText = 'LEVEL 11';
+    } else {
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+    }
+  }//close
+
+function checkGameResult11() { //open 
+    if (score >54) {
+document.getElementById('nextlevel').innerText = 'LEVEL 11';
+	openPopup();
+	playAudio();
+	gamePage.style.display = 'block';
+    	//CoverPage.style.display = 'block';
+document.getElementById('newlevel').innerText = 'LEVEL 12';
+    } else {
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+    }
+  }//close
+
+function checkGameResult12() { //open 
+    if (score >59) {
+document.getElementById('nextlevel').innerText = 'LEVEL 12';
+	openPopup();
+	playAudio();
+	gamePage.style.display = 'block';
+    	//CoverPage.style.display = 'block';
+document.getElementById('newlevel').innerText = 'LEVEL 13';
+    } else {
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+    }
+  }//close
+
+
+function checkGameResult13() { //open 
+    if (score >64) {
+document.getElementById('nextlevel').innerText = 'LEVEL 13';
+	openPopup();
+	playAudio();
+	gamePage.style.display = 'block';
+    	//CoverPage.style.display = 'block';
+document.getElementById('newlevel').innerText = 'LEVEL 14';
+    } else {
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+    }
+  }//close
+
+function checkGameResult14() { //open 
+    if (score >69) {
+document.getElementById('nextlevel').innerText = 'LEVEL 14';
+	openPopup();
+	playAudio();
+	gamePage.style.display = 'block';
+    	//CoverPage.style.display = 'block';
+document.getElementById('newlevel').innerText = 'LEVEL 15';
+    } else {
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+    }
+  }//close
+
+
+function checkGameResult15() { //open 
+    if (score >74) {
+document.getElementById('nextlevel').innerText = 'ALL LEVELS';
+	openPopup();
+	playAudio();
+	gamePage.style.display = 'none';
+    	CoverPage.style.display = 'block';
+	refresh();
+    } else {
+      alert('Sorry! You need to answer all 5 items correctly to proceed into the next level.\nDo not escape any items.Thank you!');
+	refresh();
+    }
+  }//close
+
+
+  // Start Button Logic FOR LEVEL 1 CLOSE
+
+
+
+// Pop Up Script open 
+
+let popup = document.getElementById("popup");
+
+function openPopup() {// open1
+	popup.classList.add("open-popup");
+}// close1
+
+function closePopup() {// open2
+	popup.classList.remove("open-popup");
+}// close2
+
+
+// Pop Up Script close
+
+
+function listall() {//open
+alert("LIST OF LEVELS:\nLevel 1 : Introduction In Prime Numbers \nLevel 2 : Basic Prime Numbers \nLevel 3 : Prime Factors of a Number \nLevel 4 : More Prime Factors \nLevel 5 : Simplifying Fraction \nLevel 6 : Multiplying Simple Fractions \nLevel 7 : Multiplying Large Values of Fractions \nLevel 8 : Multiplying Mixed Numbers\nLevel 9 : Multiplying Negative Fractions \nLevel 10 : Multiplying Negative Mixed Numbers \nLevel 11 : Dividing Simple Fractions \nLevel 12 : Dividing Large Values of Fractions \nLevel 13 : Dividing Mixed Numbers \nLevel 14 : Dividing Negative Fractions \nLevel 15 : Dividing Negative Mixed Numbers");
+}//close
+
+
+
+
+//audio for check open 
+function playAudio() {
+            document.getElementById("myAudio").play();
+        }
+//audio for check close
+
+//audio for check open 
+function playAudio2() {
+            document.getElementById("myAudio2").play();
+        }
+//audio for check close
+
+//SHOWME OPEN
+function ShowMe() {
+            document.getElementById("animatelevel1").style.display = 'block';
+        }
+function ShowMe2() {
+            document.getElementById("animatelevel2").style.display = 'block';
+        }
+function ShowMe3() {
+            document.getElementById("animatelevel3").style.display = 'block';
+        }
+function ShowMe4() {
+            document.getElementById("animatelevel4").style.display = 'block';
+        }
+function ShowMe5() {
+            document.getElementById("animatelevel5").style.display = 'block';
+        }
+function ShowMe6() {
+            document.getElementById("animatelevel6").style.display = 'block';
+        }
+function ShowMe7() {
+            document.getElementById("animatelevel7").style.display = 'block';
+        }
+function ShowMe8() {
+            document.getElementById("animatelevel8").style.display = 'block';
+        }
+function ShowMe9() {
+            document.getElementById("animatelevel9").style.display = 'block';
+        }
+function ShowMe10() {
+            document.getElementById("animatelevel10").style.display = 'block';
+        }
+function ShowMe11() {
+            document.getElementById("animatelevel11").style.display = 'block';
+        }
+function ShowMe12() {
+            document.getElementById("animatelevel12").style.display = 'block';
+        }
+function ShowMe13() {
+            document.getElementById("animatelevel13").style.display = 'block';
+        }
+function ShowMe14() {
+            document.getElementById("animatelevel14").style.display = 'block';
+        }
+function ShowMe15() {
+            document.getElementById("animatelevel15").style.display = 'block';
+        }
+function ShowMecomplete() {
+            document.getElementById("animatecomplete").style.display = 'block';
+        }
+
+
+//SHOWME CLOSE
+
+</script>
+
+</body>
+</html>
